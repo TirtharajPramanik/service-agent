@@ -1,0 +1,38 @@
+@tailwind base
+@tailwind components
+@tailwind utilities
+
+$font-stack: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif
+$primary-color: #3AB0FF
+$primary-variant-color: #1089FF
+$secondary-color: #FFF
+$secondary-variant-color: #F9F9F9
+
+html,
+body 
+	padding: 0
+	margin: 0
+	font-family: $font-stack
+
+body
+	color: $primary-color
+	background: $secondary-color
+
+a 
+	color: inherit
+	text-decoration: none
+
+
+* 
+	box-sizing: border-box
+
+
+@media (prefers-color-scheme: dark) 
+	html 
+		color-scheme: dark
+	
+	body 
+		color: $secondary-color
+		background: $primary-color
+	
+
