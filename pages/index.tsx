@@ -1,24 +1,27 @@
 import Head from 'next/head';
 import { ReactElement } from 'react';
-import styles from '../styles/Home.module.sass';
+import styles from '@/styles/Home.module.sass';
 import { NextPageWithLayout } from './_app';
 import { HiMenuAlt2 } from 'react-icons/hi';
 import Image from 'next/image';
 import logo from '@/public/logo-hori.svg';
 import footWave from '@/public/foot-wave.svg';
 import footLogo from '@/public/logo-vert.svg';
+import SideNav from '@/components/layout/SideNav';
+import { useNav } from '@/context/NavContext';
 
 function HomeHeader() {
+	const { toggle } = useNav();
 	return (
 		<header className={styles.headerContainer}>
-			<HiMenuAlt2 className={styles.hamMenu} />
+			<HiMenuAlt2 className={styles.hamMenu} onClick={toggle} />
 			<div className={styles.logoContainer}>
 				<Image src={logo} alt='logo' layout='responsive' />
 			</div>
 			<div className={styles.navSign}>
 				<nav className={styles.navDesk}>
 					<ul>
-						<li>home</li>
+						<li className={styles.active}>home</li>
 						<li>dashboard</li>
 						<li>services</li>
 					</ul>
@@ -42,8 +45,8 @@ function HomeFooter() {
 							placeholder='Enter Your Message'
 							rows={5}
 						/>
+						<button className={styles.contactFormBtn}>contact</button>
 					</div>
-					<button className={styles.contactFormBtn}>contact</button>
 					<div className={styles.footLogo}>
 						<Image src={footLogo} alt='footer logo' layout='responsive' />
 						<button className={styles.contactBtn}>contact</button>
@@ -62,6 +65,7 @@ function HomeFooter() {
 }
 
 const Home: NextPageWithLayout = () => {
+	const { mobnav } = useNav();
 	return (
 		<>
 			<Head>
@@ -76,6 +80,7 @@ const Home: NextPageWithLayout = () => {
 				/>
 			</Head>
 			<main className={styles.mainContainer}>
+				<SideNav />
 				<h3 className={styles.heroTitle}>Hello World!</h3>
 			</main>
 		</>

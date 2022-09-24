@@ -1,0 +1,34 @@
+// SideNav Section
+.sideContainer, .sideContainerHidden
+    @apply lg:hidden w-full bg-gray-800 bg-opacity-90 backdrop-blur-lg fixed top-0 left-0 bottom-0 min-h-screen z-10 overflow-scroll transition duration-300
+    @apply flex flex-col justify-between
+
+.sideContainer
+    @apply -translate-x-0
+
+.sideContainerHidden
+    @apply -translate-x-full
+
+.sideContainerHidden
+
+
+.sideHeader
+    @apply flex justify-around items-center
+    .logoContainer
+        @apply w-2/3 my-12 
+    .closeIcon
+        @apply text-8xl text-white transition hover:text-gray-300
+
+.navMob
+    @apply text-6xl capitalize text-center font-semibold text-white my-64
+    ul
+        @apply space-y-32
+        li
+            @apply transition hover:cursor-pointer hover:text-gray-400
+    .signupBtn
+        @apply bg-primary-variant rounded-xl shadow-gray-900 shadow-lg transition hover:bg-primary  p-6
+
+.footNav
+    @apply flex flex-col text-5xl mb-24 text-center font-medium text-gray-400 space-y-16
+    .copyText
+        @apply font-normal

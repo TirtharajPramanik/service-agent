@@ -1,26 +1,28 @@
 // Header Section
 .headerContainer
-    @apply flex justify-between items-center px-4 py-6 text-default
-    
+    @apply flex justify-between items-center px-4 py-12 lg:py-4
+
 .hamMenu
-    @apply text-8xl hover:text-secondary-variant active:text-secondary lg:hidden
+    @apply text-8xl transition hover:text-gray-400 lg:hidden
 
 .logoContainer
     @apply w-1/2 lg:w-1/4
 
 .navDesk
-    @apply hidden lg:inline text-xl
+    @apply hidden lg:inline text-xl text-default
     ul
         @apply w-64 flex justify-between items-center capitalize font-medium
         li
-            @apply hover:underline underline-offset-2 decoration-gray-400 transition
+            @apply hover:underline underline-offset-4 decoration-gray-400 transition hover:cursor-pointer active:text-gray-400
 
+.active
+    @apply text-gray-400 underline
 .navSign
     @apply flex justify-between items-center
 
 .signupBtn
     @apply text-6xl text-secondary-variant font-medium rounded-2xl border-4 border-secondary px-2 py-4 lg:px-2 lg:py-1 lg:ml-4
-    @apply hover:bg-secondary-variant hover:text-white active:bg-secondary lg:text-xl lg:rounded-xl lg:border-2 transition
+    @apply transition hover:bg-secondary hover:text-white lg:text-xl lg:rounded-xl lg:border-2 transition active:bg-secondary-variant
 
 // Footer Section
 .footerWrapper
@@ -30,26 +32,28 @@
     @apply flex justify-around items-center lg:w-full
 
 .contactForm
-    @apply text-5xl lg:text-xl w-1/2 lg:w-1/3 flex flex-col space-y-6 px-3 lg:order-2 
+    @apply text-5xl lg:text-xl w-1/2 lg:w-1/3 flex flex-col space-y-6 px-4 lg:order-2 
     input, textArea
         @apply px-2 py-6 lg:py-3 text-center rounded-xl bg-accent border border-default
 
 .footLogo
-    @apply w-full lg:w-1/3 px-3 text-center space-y-12 lg:order-1 
+    @apply w-full lg:w-1/3 px-4 text-center space-y-12 lg:order-1
+
+.contactBtn, .contactFormBtn
+    @apply text-5xl font-medium capitalize border-4 border-secondary rounded-2xl p-4 bg-secondary-variant text-white
+    @apply hover:bg-secondary lg:text-xl lg:rounded-xl lg:p-2 lg:border-2 transition lg:order-3 active:bg-secondary-variant
 
 .contactBtn
-    @apply text-5xl font-medium capitalize border-4 border-secondary rounded-2xl p-4 bg-secondary-variant text-white
-    @apply hover:bg-secondary lg:text-xl lg:rounded-xl lg:p-2 lg:border-2 transition lg:order-3 lg:hidden
+    @apply lg:hidden
 
 .contactFormBtn
-    @apply text-5xl font-medium capitalize border-4 border-secondary rounded-2xl p-4 bg-secondary-variant text-white hidden
-    @apply hover:bg-secondary lg:text-xl lg:rounded-xl lg:p-2 lg:border-2 transition lg:order-3 lg:block
+    @apply hidden lg:block
 
 .footNav
-    @apply text-4xl capitalize font-medium flex lg:flex-col justify-around mt-24 lg:order-5 lg:space-y-8 lg:text-xl lg:my-auto lg:w-fit
+    @apply text-4xl capitalize font-medium flex lg:flex-col justify-around mt-24 lg:order-5 lg:space-y-8 lg:text-xl lg:my-auto lg:w-fit my-12
 
 .copyText
-    @apply text-4xl font-normal text-center block my-12 lg:my-auto lg:order-6 lg:text-xl 
+    @apply text-4xl font-normal text-center block lg:my-auto lg:order-6 lg:text-xl
 
 // Main Section
 .mainContainer
