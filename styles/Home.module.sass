@@ -1,3 +1,5 @@
+@import "variables"
+    
 // Header Section
 .headerContainer
     @apply flex justify-between items-center px-4 py-12 lg:py-4
@@ -11,20 +13,23 @@
 .navDesk
     @apply hidden lg:inline text-xl text-default
     ul
-        @apply w-64 flex justify-between items-center capitalize font-medium
+        @apply w-64 flex justify-between items-center capitalize font-medium space-x-4
         li
             @apply hover:underline underline-offset-4 decoration-gray-400 transition hover:cursor-pointer active:text-gray-400
 
 .active
     @apply text-gray-400 underline
 .navSign
-    @apply flex justify-between items-center
+    @apply flex justify-between items-center lg:space-x-12
 
 .signupBtn
-    @apply text-6xl text-secondary-variant font-medium rounded-2xl border-4 border-secondary px-2 py-4 lg:px-2 lg:py-1 lg:ml-4
+    @apply text-5xl text-secondary-variant font-medium rounded-2xl border-4 border-secondary px-2 py-4 lg:px-2 lg:py-1
     @apply transition hover:bg-secondary hover:text-white lg:text-xl lg:rounded-xl lg:border-2 transition active:bg-secondary-variant
 
 // Footer Section
+.footerBound
+    @apply mt-32
+
 .footerWrapper
     @apply lg:flex justify-around lg:mb-12
 
@@ -55,9 +60,39 @@
 .copyText
     @apply text-4xl font-normal text-center block lg:my-auto lg:order-6 lg:text-xl
 
-// Main Section
+// Hero Section
 .mainContainer
-    @apply relative h-screen
+.heroSec
+    @apply lg:flex flex-row-reverse p-4 justify-around
+
+.heroTxt
+.iconImage
+    @apply hidden lg:block w-1/4 mx-auto my-12
+
+.heroTitle, .heroSubTitle
+    font-family: $secondary-font-stack
+    @apply font-semibold text-center capitalize my-12 lg:my-8 text-default
+    span
+        @apply text-orange-600
 
 .heroTitle
-    @apply font-semibold text-6xl text-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+    @apply text-7xl lg:text-5xl
+
+.heroSubTitle
+    @apply text-8xl lg:text-6xl lg:mb-24
+
+.heroImage
+    @apply my-16 lg:my-8 lg:w-1/2 mx-4
+
+.signupNowBtn, .signupNowBtnDesk
+    @apply text-6xl bg-primary-variant p-6 rounded-xl text-white font-bold shadow-lg block mx-auto my-12 capitalize
+    @apply transition hover:shadow-2xl hover:shadow-blue-300 active:bg-primary
+
+.signupNowBtn
+    @apply lg:hidden
+
+.signupNowBtnDesk
+    @apply text-2xl p-3 rounded-lg hidden lg:block mb-12
+
+.scrollBtn
+    @apply bg-blue-100 rounded-full text-6xl p-2 shadow-lg hidden lg:block m-auto

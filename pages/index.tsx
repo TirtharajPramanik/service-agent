@@ -3,10 +3,12 @@ import { ReactElement } from 'react';
 import styles from '@/styles/Home.module.sass';
 import { NextPageWithLayout } from './_app';
 import { HiMenuAlt2 } from 'react-icons/hi';
+import { FaAngleDoubleDown } from 'react-icons/fa';
 import Image from 'next/image';
 import logo from '@/public/logo-hori.svg';
 import footWave from '@/public/foot-wave.svg';
 import footLogo from '@/public/logo-vert.svg';
+import heroLogo from '@/public/hero.svg';
 import SideNav from '@/components/layout/SideNav';
 import { useNav } from '@/context/NavContext';
 
@@ -34,9 +36,9 @@ function HomeHeader() {
 
 function HomeFooter() {
 	return (
-		<>
+		<footer className={styles.footerBound}>
 			<Image src={footWave} alt='wave' layout='responsive' />
-			<footer className={styles.footerWrapper}>
+			<div className={styles.footerWrapper}>
 				<div className={styles.footerContainer}>
 					<div className={styles.contactForm}>
 						<input type='email' name='email' placeholder='Enter Your Email' />
@@ -59,13 +61,12 @@ function HomeFooter() {
 						&copy; 2022 philipmart service
 					</strong>
 				</div>
-			</footer>
-		</>
+			</div>
+		</footer>
 	);
 }
 
 const Home: NextPageWithLayout = () => {
-	const { mobnav } = useNav();
 	return (
 		<>
 			<Head>
@@ -79,9 +80,27 @@ const Home: NextPageWithLayout = () => {
 					content='small business, digital marketing, online marketing, drycleaners, tailors, handyman, marketing'
 				/>
 			</Head>
+			<SideNav />
 			<main className={styles.mainContainer}>
-				<SideNav />
-				<h3 className={styles.heroTitle}>Hello World!</h3>
+				<section className={styles.heroSec}>
+					<div className={styles.heroTxt}>
+						<div className={styles.iconImage}>
+							<Image src={footLogo} alt='icon' layout='responsive' />
+						</div>
+						<h1 className={styles.heroTitle}>
+							take your <span>business online</span>
+						</h1>
+						<h2 className={styles.heroSubTitle}>
+							get more <span>customers</span>
+						</h2>
+						<button className={styles.signupNowBtnDesk}>sign up now</button>
+						<FaAngleDoubleDown className={styles.scrollBtn} />
+					</div>
+					<div className={styles.heroImage}>
+						<Image src={heroLogo} alt='hero' layout='responsive' />
+					</div>
+				</section>
+				<button className={styles.signupNowBtn}>sign up now</button>
 			</main>
 		</>
 	);

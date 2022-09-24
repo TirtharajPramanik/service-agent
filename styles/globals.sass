@@ -2,21 +2,15 @@
 @tailwind components
 @tailwind utilities
 
-$font-stack: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif
-$primary-color: #3AB0FF
-$primary-variant-color: #1089FF
-$secondary-color: #FEB139
-$secondary-variant-color: #FD841F
-$accent-color: #FFF
-$accent-variant-color: #F9F9F9
-$text-color: #1e1e1e
-$text-variant-color: #000
+@import "variables"
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@400;500;600;700&display=swap')
 
 html,
 body 
 	padding: 0
 	margin: 0
-	font-family: $font-stack
+	font-family: $primary-font-stack
 
 body
 	color: $text-color
