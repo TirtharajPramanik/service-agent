@@ -2,16 +2,16 @@
     
 // Header Section
 .headerContainer
-    @apply flex justify-between items-center px-4 py-12 lg:py-4
+    @apply flex justify-between items-center px-2 py-6 lg:p-4 md:mb-12
 
 .hamMenu
-    @apply text-8xl transition hover:text-gray-400 lg:hidden
+    @apply text-4xl transition hover:text-gray-400 lg:hidden md:text-6xl
 
 .logoContainer
     @apply w-1/2 lg:w-1/4
 
 .navDesk
-    @apply hidden lg:inline text-xl text-default
+    @apply hidden lg:inline text-xl
     ul
         @apply w-64 flex justify-between items-center capitalize font-medium space-x-4
         li
@@ -23,47 +23,47 @@
     @apply flex justify-between items-center lg:space-x-12
 
 .signupBtn
-    @apply text-5xl text-secondary-variant font-medium rounded-2xl border-4 border-secondary px-2 py-4 lg:px-2 lg:py-1
-    @apply transition hover:bg-secondary hover:text-white lg:text-xl lg:rounded-xl lg:border-2 transition active:bg-secondary-variant
+    @apply text-xl text-orange-600 font-medium rounded-xl border-2 border-orange-500 p-1 lg:px-2 lg:py-1 md:text-4xl md:px-4 md:py-3
+    @apply transition hover:bg-orange-500 hover:text-white lg:text-xl lg:rounded-xl lg:border-2 transition active:bg-orange-600
 
 // Footer Section
 .footerBound
     @apply mt-32
 
 .footerWrapper
-    @apply lg:flex justify-around lg:mb-12
+    @apply md:flex justify-around md:mb-12
 
 .footerContainer
-    @apply flex justify-around items-center lg:w-full
+    @apply flex justify-around items-center md:w-full
 
 .contactForm
-    @apply text-5xl lg:text-xl w-1/2 lg:w-1/3 flex flex-col space-y-6 px-4 lg:order-2 
+    @apply text-lg md:text-xl w-1/2 md:w-1/3 flex flex-col space-y-4 md:order-2 px-2
     input, textArea
-        @apply px-2 py-6 lg:py-3 text-center rounded-xl bg-accent border border-default
+        @apply p-1 md:py-3 text-center rounded-lg bg-gray-100 border
 
 .footLogo
-    @apply w-full lg:w-1/3 px-4 text-center space-y-12 lg:order-1
+    @apply w-full sm:w-1/3 px-4 text-center space-y-4 md:order-1
 
 .contactBtn, .contactFormBtn
-    @apply text-5xl font-medium capitalize border-4 border-secondary rounded-2xl p-4 bg-secondary-variant text-white
-    @apply hover:bg-secondary lg:text-xl lg:rounded-xl lg:p-2 lg:border-2 transition lg:order-3 active:bg-secondary-variant
+    @apply text-lg font-medium capitalize border-2 border-orange-500 rounded-xl p-2 bg-orange-600 text-white
+    @apply hover:bg-orange-500 md:text-xl md:rounded-xl md:p-2 md:border-2 transition md:order-3 active:bg-orange-600
 
 .contactBtn
-    @apply lg:hidden
+    @apply md:hidden
 
 .contactFormBtn
-    @apply hidden lg:block
+    @apply hidden md:block
 
 .footNav
-    @apply text-4xl capitalize font-medium flex lg:flex-col justify-around mt-24 lg:order-5 lg:space-y-8 lg:text-xl lg:my-auto lg:w-fit my-12
+    @apply capitalize font-medium flex md:flex-col justify-around mt-12 md:order-5 md:space-y-8 md:text-xl md:my-auto md:w-fit my-4 px-2
 
 .copyText
-    @apply text-4xl font-normal text-center block lg:my-auto lg:order-6 lg:text-xl
+    @apply font-normal text-center block md:my-auto md:order-6 md:text-xl
 
 // Hero Section
 .mainContainer
 .heroSec
-    @apply lg:flex flex-row-reverse p-4 justify-around
+    @apply lg:flex flex-row-reverse justify-around
 
 .heroTxt
 .iconImage
@@ -71,28 +71,49 @@
 
 .heroTitle, .heroSubTitle
     font-family: $secondary-font-stack
-    @apply font-semibold text-center capitalize my-12 lg:my-8 text-default
+    @apply font-bold text-center capitalize my-4 lg:my-8
     span
         @apply text-orange-600
 
 .heroTitle
-    @apply text-7xl lg:text-5xl
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl
 
 .heroSubTitle
-    @apply text-8xl lg:text-6xl lg:mb-24
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl md:mb-24
 
 .heroImage
-    @apply my-16 lg:my-8 lg:w-1/2 mx-4
+    @apply my-8 lg:my-8 lg:w-1/2 mx-4
 
 .signupNowBtn, .signupNowBtnDesk
-    @apply text-6xl bg-primary-variant p-6 rounded-xl text-white font-bold shadow-lg block mx-auto my-12 capitalize
-    @apply transition hover:shadow-2xl hover:shadow-blue-300 active:bg-primary
+    @apply text-xl bg-blue-500 p-3 rounded-xl text-white font-bold shadow-lg block mx-auto my-12 capitalize
+    @apply transition hover:shadow-2xl hover:shadow-blue-300 active:bg-blue-400
 
 .signupNowBtn
-    @apply lg:hidden
+    @apply lg:hidden sm:text-2xl md:text-3xl
 
 .signupNowBtnDesk
     @apply text-2xl p-3 rounded-lg hidden lg:block mb-12
 
 .scrollBtn
-    @apply bg-blue-100 rounded-full text-6xl p-2 shadow-lg hidden lg:block m-auto
+    @apply bg-gray-50 rounded-full text-6xl p-2 shadow-lg hidden lg:block mx-auto mb-4 text-gray-500
+
+.sliderContainer
+    @apply lg:hidden py-8 bg-gray-50
+
+.sliderImage
+.noSlideContainer
+    @apply lg:block hidden bg-gray-50 px-8 py-16
+
+.noSlide
+    @apply flex justify-around items-center
+
+.noSlideImage
+    @apply w-3/4
+
+.slideTitle
+    @apply text-2xl sm:text-3xl font-semibold lg:font-medium mb-8 ml-4
+    span
+        @apply text-orange-600
+
+.slideTxt
+    @apply text-xl lg:text-xl text-center font-semibold lg:font-medium

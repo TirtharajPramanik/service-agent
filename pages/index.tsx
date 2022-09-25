@@ -11,6 +11,10 @@ import footLogo from '@/public/logo-vert.svg';
 import heroLogo from '@/public/hero.svg';
 import SideNav from '@/components/layout/SideNav';
 import { useNav } from '@/context/NavContext';
+import { motion } from 'framer-motion';
+import { CarouselProvider, Slide, Slider } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+import sliderImages from '@/utils/sliderImages';
 
 function HomeHeader() {
 	const { toggle } = useNav();
@@ -66,6 +70,12 @@ function HomeFooter() {
 	);
 }
 
+const mainVariants = {
+	hidden: { opacity: 0, x: -200, y: 0 },
+	enter: { opacity: 1, x: 0, y: 0 },
+	exit: { opacity: 0, x: 0, y: -100 }
+};
+
 const Home: NextPageWithLayout = () => {
 	return (
 		<>
@@ -81,7 +91,13 @@ const Home: NextPageWithLayout = () => {
 				/>
 			</Head>
 			<SideNav />
-			<main className={styles.mainContainer}>
+			<motion.main
+				initial='hidden'
+				animate='enter'
+				exit='exit'
+				variants={mainVariants}
+				transition={{ type: 'linear' }}
+				className={styles.mainContainer}>
 				<section className={styles.heroSec}>
 					<div className={styles.heroTxt}>
 						<div className={styles.iconImage}>
@@ -97,11 +113,62 @@ const Home: NextPageWithLayout = () => {
 						<FaAngleDoubleDown className={styles.scrollBtn} />
 					</div>
 					<div className={styles.heroImage}>
-						<Image src={heroLogo} alt='hero' layout='responsive' />
+						<Image src={heroLogo} alt='hero' layout='responsive' priority />
 					</div>
 				</section>
 				<button className={styles.signupNowBtn}>sign up now</button>
-			</main>
+
+				<div className={styles.noSlideContainer}>
+					<h3 className={styles.slideTitle}>
+						We help local businesses <span>Grow Big</span>
+					</h3>
+					<div className={styles.noSlide}>
+						{sliderImages.map((item, id) => {
+							return (
+								<div className={styles.noSlideImage} key={id}>
+									<a href={item.link} rel='noreferrer' target='_blank'>
+										<Image src={item.image} alt='slider' layout='responsive' />
+										<p className={styles.slideTxt}>philipmart {item.title}</p>
+									</a>
+								</div>
+							);
+						})}
+					</div>
+				</div>
+
+				<div className={styles.sliderContainer}>
+					<h3 className={styles.slideTitle}>
+						We help local businesses <span>Grow Big</span>
+					</h3>
+					<CarouselProvider
+						naturalSlideWidth={125}
+						naturalSlideHeight={100}
+						totalSlides={3}
+						visibleSlides={1.25}
+						isPlaying>
+						<Slider>
+							{sliderImages.map((item, id) => {
+								return (
+									<Slide index={0} key={id}>
+										<a href={item.link} rel='noreferrer' target='_blank'>
+											<div className={styles.sliderImage}>
+												<Image
+													src={item.image}
+													alt='slider'
+													layout='responsive'
+												/>
+												<p className={styles.slideTxt}>
+													philipmart {item.title}
+												</p>
+											</div>
+										</a>
+									</Slide>
+								);
+							})}
+						</Slider>
+					</CarouselProvider>
+				</div>
+			</motion.main>
 		</>
 	);
 };

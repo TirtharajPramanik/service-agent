@@ -4,6 +4,7 @@ import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { NavProvider } from '@/context/NavContext';
+import { AnimatePresence } from 'framer-motion';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 	getLayout?: (page: ReactElement) => ReactNode;
@@ -20,9 +21,17 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 			{getLayout(
 				<>
 					<Head>
-						<meta name='viewport' content='viewport-fit=cover' />
+						<meta
+							name='viewport'
+							content='width=device-width, initial-scale=1.0'
+						/>
 					</Head>
-					<Component {...pageProps} />
+					<AnimatePresence
+						mode='wait'
+						initial={false}
+						onExitComplete={() => window.scrollTo(0, 0)}>
+						<Component {...pageProps} />
+					</AnimatePresence>
 				</>
 			)}
 		</NavProvider>

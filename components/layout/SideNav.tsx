@@ -20,8 +20,8 @@ function SideNav() {
 					<li>home</li>
 					<li>dashboard</li>
 					<li>services</li>
-					<button className={styles.signupBtn}>sign up</button>
 				</ul>
+				<button className={styles.signupBtn}>sign up</button>
 			</nav>
 			<div className={styles.footNav}>
 				<p>privacy policy</p>
