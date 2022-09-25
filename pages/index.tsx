@@ -15,8 +15,9 @@ import { motion } from 'framer-motion';
 import { CarouselProvider, Slide, Slider } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import sliderImages from '@/utils/sliderImages';
+import Link from 'next/link';
 
-function HomeHeader() {
+export function HomeHeader() {
 	const { toggle } = useNav();
 	return (
 		<header className={styles.headerContainer}>
@@ -27,9 +28,15 @@ function HomeHeader() {
 			<div className={styles.navSign}>
 				<nav className={styles.navDesk}>
 					<ul>
-						<li className={styles.active}>home</li>
-						<li>dashboard</li>
-						<li>services</li>
+						<li className={styles.active}>
+							<Link href='/'>home</Link>
+						</li>
+						<li>
+							<Link href='/dashboard'>dashboard</Link>
+						</li>
+						<li>
+							<Link href='/services'>services</Link>
+						</li>
 					</ul>
 				</nav>
 				<button className={styles.signupBtn}>sign up</button>
@@ -38,7 +45,7 @@ function HomeHeader() {
 	);
 }
 
-function HomeFooter() {
+export function HomeFooter() {
 	return (
 		<footer className={styles.footerBound}>
 			<Image src={footWave} alt='wave' layout='responsive' />
