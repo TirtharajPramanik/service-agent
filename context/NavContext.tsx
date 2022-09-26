@@ -25,7 +25,6 @@ export function NavProvider({ children }: Props) {
 
 	const toggle = () => {
 		setMobnav(!mobnav);
-		console.log(mobnav);
 	};
 
 	const value = {

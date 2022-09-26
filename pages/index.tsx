@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { ReactElement } from 'react';
 import styles from '@/styles/Home.module.sass';
 import { NextPageWithLayout } from './_app';
-import { HiMenuAlt2 } from 'react-icons/hi';
+import { HiMenuAlt3 } from 'react-icons/hi';
 import { FaAngleDoubleDown } from 'react-icons/fa';
 import Image from 'next/image';
 import logo from '@/public/logo-hori.svg';
@@ -16,12 +16,12 @@ import { CarouselProvider, Slide, Slider } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import sliderImages from '@/utils/sliderImages';
 import Link from 'next/link';
+import articles from '@/utils/articles';
 
 export function HomeHeader() {
 	const { toggle } = useNav();
 	return (
 		<header className={styles.headerContainer}>
-			<HiMenuAlt2 className={styles.hamMenu} onClick={toggle} />
 			<div className={styles.logoContainer}>
 				<Image src={logo} alt='logo' layout='responsive' />
 			</div>
@@ -29,17 +29,26 @@ export function HomeHeader() {
 				<nav className={styles.navDesk}>
 					<ul>
 						<li className={styles.active}>
-							<Link href='/'>home</Link>
+							<Link scroll={false} href='/'>
+								home
+							</Link>
 						</li>
 						<li>
-							<Link href='/dashboard'>dashboard</Link>
+							<Link scroll={false} href='/dashboard'>
+								dashboard
+							</Link>
 						</li>
 						<li>
-							<Link href='/services'>services</Link>
+							<Link scroll={false} href='/services'>
+								services
+							</Link>
 						</li>
 					</ul>
 				</nav>
-				<button className={styles.signupBtn}>sign up</button>
+				<div className={styles.signMenu}>
+					<button className={styles.signupBtn}>sign up</button>
+					<HiMenuAlt3 className={styles.hamMenu} onClick={toggle} />
+				</div>
 			</div>
 		</header>
 	);
@@ -56,7 +65,7 @@ export function HomeFooter() {
 						<textarea
 							name='message'
 							placeholder='Enter Your Message'
-							rows={5}
+							rows={3}
 						/>
 						<button className={styles.contactFormBtn}>contact</button>
 					</div>
@@ -157,7 +166,10 @@ const Home: NextPageWithLayout = () => {
 							{sliderImages.map((item, id) => {
 								return (
 									<Slide index={0} key={id}>
-										<a href={item.link} rel='noreferrer' target='_blank'>
+										<a
+											href={item.link}
+											rel='noopener noreferrer'
+											target='_blank'>
 											<div className={styles.sliderImage}>
 												<Image
 													src={item.image}
@@ -175,6 +187,58 @@ const Home: NextPageWithLayout = () => {
 						</Slider>
 					</CarouselProvider>
 				</div>
+				<section className={styles.articleSec}>
+					{articles.map((item, id) => {
+						return (
+							<Link scroll={false} href={item.link} key={id}>
+								<article className={styles.article}>
+									<div className={styles.articleImage}>
+										<Image src={item.image} alt='slider' layout='responsive' />
+									</div>
+									<div className={styles.articleTxt}>
+										<p className={styles.articleTitle}>{item.title}</p>
+										<p className={styles.articleDesc}>{item.desc}</p>
+										<button className={styles.joinBtn}>{item.quote}</button>
+									</div>
+								</article>
+							</Link>
+						);
+					})}
+				</section>
+				<button className={styles.exploreBtn}>Explore Services</button>
+				<section className={styles.methodsContainer}>
+					<p className={styles.methodsTitle}>how we work</p>
+					<ul className={styles.methods}>
+						<li>
+							We will showcase our services to people through our network.
+						</li>
+						<li>
+							We will assign our signed in service providers based on location &
+							time to provide the best solution.
+						</li>
+						<li>
+							For every customer you have attended with our help, we will charge
+							a tiny amount.
+						</li>
+					</ul>
+					<p className={styles.methodsDesc}>
+						Until you land your first customer, our services will be completely{' '}
+						<span>FREE!</span>
+					</p>
+					<div className={styles.descContainer}>
+						<a
+							href='https://philipmartservice.com'
+							rel='noopener noreferrer'
+							target='_blank'
+							className={styles.customerLink}>
+							<p className={styles.methodsDesc}>
+								View our customer <span>APP</span>
+							</p>
+						</a>
+						<p>or,</p>
+						<button className={styles.signupBtmBtn}>sign up</button>
+					</div>
+				</section>
 			</motion.main>
 		</>
 	);

@@ -1,9 +1,10 @@
 import SideNav from '@/components/layout/SideNav';
 import Head from 'next/head';
 import { ReactElement } from 'react';
-import { HomeFooter, HomeHeader } from '.';
 import { NextPageWithLayout } from './_app';
 import { motion } from 'framer-motion';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 const mainVariants = {
 	hidden: { opacity: 0, x: -200, y: 0 },
@@ -42,9 +43,9 @@ const DashboardPage: NextPageWithLayout = () => {
 DashboardPage.getLayout = function getLayout(page: ReactElement) {
 	return (
 		<>
-			<HomeHeader />
+			<Header title='dashboard' back='/' action='search' />
 			{page}
-			<HomeFooter />
+			<Footer />
 		</>
 	);
 };
