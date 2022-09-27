@@ -39,7 +39,7 @@
     @apply flex justify-between items-center py-3 px-2
 
 .back
-    @apply flex justify-start items-center
+    @apply flex justify-start items-center lg:ml-8
 
 .title
     @apply capitalize text-lg font-medium
@@ -48,7 +48,29 @@
     @apply flex justify-start items-center space-x-2
 
 .action
-    @apply cursor-pointer hover:scale-105
+    @apply cursor-pointer hover:scale-105 hover:text-violet-500 transition lg:mr-8
 
 .link
-    @apply cursor-pointer text-blue-500 hover:text-blue-400
+    @apply cursor-pointer text-blue-500 transition hover:scale-105 hover:text-violet-500 lg:mr-8
+
+.menu
+    @apply lg:hidden
+
+.navbar
+    @apply flex items-center space-x-6
+    ul
+        @apply lg:flex space-x-6 items-center hidden
+        li
+            @apply capitalize transition hover:scale-105 hover:underline underline-offset-4
+            
+        li.active
+            @apply text-violet-500
+
+.backTitle
+    @apply flex items-center
+
+.inBack
+    @apply hidden lg:block text-xl
+
+.notInBack
+    @apply lg:hidden

@@ -16,9 +16,9 @@
         @apply w-64 flex justify-between items-center capitalize font-medium space-x-4
         li
             @apply hover:underline underline-offset-4 decoration-gray-400 transition hover:cursor-pointer active:text-gray-400
+        li.active
+            @apply text-orange-500
 
-.active
-    @apply text-gray-400 underline
 .navSign
     @apply flex justify-between items-center lg:space-x-12
 
@@ -84,7 +84,7 @@
     @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl md:mb-24
 
 .heroImage
-    @apply my-8 lg:my-8 lg:w-1/2 mx-4
+    @apply my-8 lg:w-1/2 mx-4 sm:mx-8 md:mx-16 lg:mx-4
 
 .signupNowBtn, .signupNowBtnDesk
     @apply text-xl bg-blue-500 p-3 rounded-xl text-white font-bold shadow-lg block mx-auto my-12 capitalize

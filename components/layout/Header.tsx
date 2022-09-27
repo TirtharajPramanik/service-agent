@@ -13,25 +13,53 @@ interface IProps {
 
 function Header({ title, back, action }: IProps) {
 	const { toggle } = useNav();
+	console.log(title);
 	return (
 		<header className={styles.headerContainer}>
-			<Link scroll={false} href={back}>
-				<div className={`${styles.back} ${styles.action}`}>
-					<IoIosArrowBack size={20} />
-					<p>back</p>
-				</div>
-			</Link>
-			<p className={styles.title}>{title}</p>
-			<div className={styles.actionContainer}>
-				{action === 'search' ? (
-					<BiSearchAlt size={24} className={styles.action} />
-				) : (
-					<Link scroll={false} href={action}>
-						<div className={styles.link}>{action}</div>
-					</Link>
-				)}
-				<HiMenuAlt3 size={24} onClick={toggle} className={styles.action} />
+			<div className={styles.backTitle}>
+				<Link scroll={false} href={back}>
+					<div className={`${styles.back} ${styles.action}`}>
+						<IoIosArrowBack size={20} />
+						<p>back</p>
+					</div>
+				</Link>
+				<p className={`${styles.title} ${styles.inBack}`}>{title}</p>
 			</div>
+			<p className={`${styles.title} ${styles.notInBack}`}>{title}</p>
+			<nav className={styles.navbar}>
+				<ul>
+					<li>
+						<Link scroll={false} href='/'>
+							home
+						</Link>
+					</li>
+					<li className={title === 'services' ? '' : styles.active}>
+						<Link scroll={false} href='/dashboard'>
+							dashboard
+						</Link>
+					</li>
+					<li className={title === 'services' ? styles.active : ''}>
+						<Link scroll={false} href='/services'>
+							services
+						</Link>
+					</li>
+				</ul>
+
+				<div className={styles.actionContainer}>
+					{action === 'search' ? (
+						<BiSearchAlt size={24} className={styles.action} />
+					) : (
+						<Link scroll={false} href={action}>
+							<div className={styles.link}>{action}</div>
+						</Link>
+					)}
+					<HiMenuAlt3
+						size={24}
+						onClick={toggle}
+						className={`${styles.action} ${styles.menu}`}
+					/>
+				</div>
+			</nav>
 		</header>
 	);
 }

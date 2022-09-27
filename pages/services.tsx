@@ -43,7 +43,7 @@ const ServicesPage: NextPageWithLayout = () => {
 ServicesPage.getLayout = function getLayout(page: ReactElement) {
 	return (
 		<>
-			<Header title='Services' back='/' action='search' />
+			<Header title='services' back='/' action='signup' />
 			{page}
 			<Footer />
 		</>
