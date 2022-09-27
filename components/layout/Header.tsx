@@ -13,11 +13,10 @@ interface IProps {
 
 function Header({ title, back, action }: IProps) {
 	const { toggle } = useNav();
-	console.log(title);
 	return (
 		<header className={styles.headerContainer}>
 			<div className={styles.backTitle}>
-				<Link scroll={false} href={back}>
+				<Link href={back}>
 					<div className={`${styles.back} ${styles.action}`}>
 						<IoIosArrowBack size={20} />
 						<p>back</p>
@@ -29,19 +28,13 @@ function Header({ title, back, action }: IProps) {
 			<nav className={styles.navbar}>
 				<ul>
 					<li>
-						<Link scroll={false} href='/'>
-							home
-						</Link>
+						<Link href='/'>home</Link>
 					</li>
 					<li className={title === 'services' ? '' : styles.active}>
-						<Link scroll={false} href='/dashboard'>
-							dashboard
-						</Link>
+						<Link href='/dashboard'>dashboard</Link>
 					</li>
 					<li className={title === 'services' ? styles.active : ''}>
-						<Link scroll={false} href='/services'>
-							services
-						</Link>
+						<Link href='/services'>services</Link>
 					</li>
 				</ul>
 
@@ -49,7 +42,7 @@ function Header({ title, back, action }: IProps) {
 					{action === 'search' ? (
 						<BiSearchAlt size={24} className={styles.action} />
 					) : (
-						<Link scroll={false} href={action}>
+						<Link href={action}>
 							<div className={styles.link}>{action}</div>
 						</Link>
 					)}

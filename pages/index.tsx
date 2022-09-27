@@ -30,24 +30,20 @@ function HomeHeader() {
 				<nav className={styles.navDesk}>
 					<ul>
 						<li className={styles.active}>
-							<Link scroll={false} href='/'>
-								home
-							</Link>
+							<Link href='/'>home</Link>
 						</li>
 						<li>
-							<Link scroll={false} href='/dashboard'>
-								dashboard
-							</Link>
+							<Link href='/dashboard'>dashboard</Link>
 						</li>
 						<li>
-							<Link scroll={false} href='/services'>
-								services
-							</Link>
+							<Link href='/services'>services</Link>
 						</li>
 					</ul>
 				</nav>
 				<div className={styles.signMenu}>
-					<button className={styles.signupBtn}>sign up</button>
+					<Link href='/dashboard'>
+						<button className={styles.signupBtn}>sign up</button>
+					</Link>
 					<HiMenuAlt3 className={styles.hamMenu} onClick={toggle} />
 				</div>
 			</div>
@@ -68,11 +64,19 @@ function HomeFooter() {
 							placeholder='Enter Your Message'
 							rows={3}
 						/>
-						<button className={styles.contactFormBtn}>contact</button>
+						<button
+							className={styles.contactFormBtn}
+							onClick={() => alert('enter text first')}>
+							contact
+						</button>
 					</div>
 					<div className={styles.footLogo}>
 						<Image src={footLogo} alt='footer logo' layout='responsive' />
-						<button className={styles.contactBtn}>contact</button>
+						<button
+							className={styles.contactBtn}
+							onClick={() => alert('enter text first')}>
+							contact
+						</button>
 					</div>
 				</div>
 				<div className={styles.footNav}>
@@ -127,7 +131,7 @@ function Article({ item }: { item: IArticle }) {
 			<div className={styles.articleTxt}>
 				<p className={styles.articleTitle}>{item.title}</p>
 				<p className={styles.articleDesc}>{item.desc}</p>
-				<Link scroll={false} href={item.link}>
+				<Link href={item.link}>
 					<button className={styles.joinBtn}>{item.quote}</button>
 				</Link>
 			</div>
@@ -136,9 +140,9 @@ function Article({ item }: { item: IArticle }) {
 }
 
 const Home: NextPageWithLayout = () => {
-	const isMD = useMedia('(min-width: 400px)');
-	const isLG = useMedia('(min-width: 600px)');
-	const isXL = useMedia('(min-width: 800px)');
+	const isMD = useMedia('(min-width: 400px)', false);
+	const isLG = useMedia('(min-width: 600px)', false);
+	const isXL = useMedia('(min-width: 800px)', false);
 	return (
 		<>
 			<Head>
@@ -171,14 +175,20 @@ const Home: NextPageWithLayout = () => {
 						<h2 className={styles.heroSubTitle}>
 							get more <span>customers</span>
 						</h2>
-						<button className={styles.signupNowBtnDesk}>sign up now</button>
-						<FaAngleDoubleDown className={styles.scrollBtn} />
+						<Link href='/dashboard'>
+							<button className={styles.signupNowBtnDesk}>sign up now</button>
+						</Link>
+						<Link href='#article'>
+							<FaAngleDoubleDown className={styles.scrollBtn} />
+						</Link>
 					</div>
 					<div className={styles.heroImage}>
 						<Image src={heroLogo} alt='hero' layout='responsive' priority />
 					</div>
 				</section>
-				<button className={styles.signupNowBtn}>sign up now</button>
+				<Link href='/dashboard'>
+					<button className={styles.signupNowBtn}>sign up now</button>
+				</Link>
 
 				<div className={styles.noSlideContainer}>
 					<h3 className={styles.slideTitle}>
@@ -234,12 +244,14 @@ const Home: NextPageWithLayout = () => {
 					</CarouselProvider>
 				</div>
 
-				<section className={styles.articleSec}>
+				<section className={styles.articleSec} id='article'>
 					{articles.map((item, id) => {
 						return <Article key={id} item={item} />;
 					})}
 				</section>
-				<button className={styles.exploreBtn}>Explore Services</button>
+				<Link href='/services'>
+					<button className={styles.exploreBtn}>Explore Services</button>
+				</Link>
 				<section className={styles.methodsContainer}>
 					<p className={styles.methodsTitle}>how we work</p>
 					<ul className={styles.methods}>
@@ -270,7 +282,9 @@ const Home: NextPageWithLayout = () => {
 							</p>
 						</a>
 						<p>or,</p>
-						<button className={styles.signupBtmBtn}>sign up</button>
+						<Link href='/dashboard'>
+							<button className={styles.signupBtmBtn}>sign up</button>
+						</Link>
 					</div>
 				</section>
 			</motion.main>
