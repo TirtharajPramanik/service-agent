@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { ReactElement } from 'react';
+import { ReactElement, useEffect, useRef } from 'react';
 import styles from '@/styles/Home.module.sass';
 import { NextPageWithLayout } from './_app';
 import { HiMenuAlt3 } from 'react-icons/hi';
@@ -11,14 +11,15 @@ import footLogo from '@/public/logo-vert.svg';
 import heroLogo from '@/public/hero.svg';
 import SideNav from '@/components/layout/SideNav';
 import { useNav } from '@/context/NavContext';
-import { motion } from 'framer-motion';
+import { motion, useAnimation, useInView, Variants } from 'framer-motion';
 import { CarouselProvider, Slide, Slider } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import sliderImages from '@/utils/sliderImages';
 import Link from 'next/link';
-import articles from '@/utils/articles';
+import articles, { IArticle } from '@/utils/articles';
+import { useMedia } from 'react-use';
 
-export function HomeHeader() {
+function HomeHeader() {
 	const { toggle } = useNav();
 	return (
 		<header className={styles.headerContainer}>
@@ -54,7 +55,7 @@ export function HomeHeader() {
 	);
 }
 
-export function HomeFooter() {
+function HomeFooter() {
 	return (
 		<footer className={styles.footerBound}>
 			<Image src={footWave} alt='wave' layout='responsive' />
@@ -92,7 +93,52 @@ const mainVariants = {
 	exit: { opacity: 0, x: 0, y: -100 }
 };
 
+const articleVariants: Variants = {
+	enter: {
+		opacity: 1,
+		y: 0,
+		transition: { duration: 1, ease: 'easeIn' }
+	},
+	exit: {
+		opacity: 0,
+		y: 100,
+		transition: { duration: 1, ease: 'easeOut' }
+	}
+};
+
+function Article({ item }: { item: IArticle }) {
+	const controls = useAnimation();
+	const articleRef = useRef(null);
+	const inView = useInView(articleRef);
+	useEffect(() => {
+		if (inView) controls.start('enter');
+		else controls.start('exit');
+	}, [controls, inView]);
+	return (
+		<motion.article
+			ref={articleRef}
+			animate={controls}
+			initial='exit'
+			variants={articleVariants}
+			className={styles.article}>
+			<div className={styles.articleImage}>
+				<Image src={item.image} alt='slider' layout='responsive' />
+			</div>
+			<div className={styles.articleTxt}>
+				<p className={styles.articleTitle}>{item.title}</p>
+				<p className={styles.articleDesc}>{item.desc}</p>
+				<Link scroll={false} href={item.link}>
+					<button className={styles.joinBtn}>{item.quote}</button>
+				</Link>
+			</div>
+		</motion.article>
+	);
+}
+
 const Home: NextPageWithLayout = () => {
+	const isMD = useMedia('(min-width: 400px)');
+	const isLG = useMedia('(min-width: 600px)');
+	const isXL = useMedia('(min-width: 800px)');
 	return (
 		<>
 			<Head>
@@ -160,7 +206,7 @@ const Home: NextPageWithLayout = () => {
 						naturalSlideWidth={125}
 						naturalSlideHeight={100}
 						totalSlides={3}
-						visibleSlides={1.25}
+						visibleSlides={isMD ? (isLG ? (isXL ? 2.5 : 2) : 1.5) : 1.25}
 						isPlaying>
 						<Slider>
 							{sliderImages.map((item, id) => {
@@ -187,22 +233,10 @@ const Home: NextPageWithLayout = () => {
 						</Slider>
 					</CarouselProvider>
 				</div>
+
 				<section className={styles.articleSec}>
 					{articles.map((item, id) => {
-						return (
-							<Link scroll={false} href={item.link} key={id}>
-								<article className={styles.article}>
-									<div className={styles.articleImage}>
-										<Image src={item.image} alt='slider' layout='responsive' />
-									</div>
-									<div className={styles.articleTxt}>
-										<p className={styles.articleTitle}>{item.title}</p>
-										<p className={styles.articleDesc}>{item.desc}</p>
-										<button className={styles.joinBtn}>{item.quote}</button>
-									</div>
-								</article>
-							</Link>
-						);
+						return <Article key={id} item={item} />;
 					})}
 				</section>
 				<button className={styles.exploreBtn}>Explore Services</button>

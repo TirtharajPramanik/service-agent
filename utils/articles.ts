@@ -3,6 +3,14 @@ import autoIm from '@/public/auto.svg';
 import deliIm from '@/public/deli.svg';
 import indoIm from '@/public/indo.svg';
 
+export interface IArticle {
+	title: string;
+	desc: string;
+	image: any;
+	quote: string;
+	link: string;
+}
+
 const meca = {
 	title: 'mechanical repairs',
 	desc: 'If you are a mechanic, plumber or an electrician, not to worry, we will help you reach your customers. All you need is your tools and an account in our service.',
