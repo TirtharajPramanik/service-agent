@@ -28,7 +28,7 @@ function SideNav() {
 						<Link href='/services'>services</Link>
 					</li>
 				</ul>
-				<button className={styles.signupBtn} onClick={toggle}>
+				<button type='button' className={styles.signupBtn} onClick={toggle}>
 					sign up
 				</button>
 			</nav>

@@ -43,7 +43,7 @@ function Header({ title, back, action }: IProps) {
 						<BiSearchAlt size={24} className={styles.action} />
 					) : (
 						<Link href={action}>
-							<div className={styles.link}>{action}</div>
+							<div className={styles.action}>{action}</div>
 						</Link>
 					)}
 					<HiMenuAlt3

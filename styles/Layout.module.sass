@@ -2,60 +2,42 @@
 .sideContainer, .sideContainerHidden
     @apply lg:hidden w-full bg-gray-800 bg-opacity-90 backdrop-blur-lg fixed top-0 left-0 bottom-0 min-h-screen z-10 overflow-scroll transition duration-300
     @apply flex flex-col justify-between
-
 .sideContainer
     @apply translate-x-0
-
 .sideContainerHidden
     @apply translate-x-full
-
 .sideContainerHidden
-
-
 .sideHeader
     @apply flex justify-around items-center
     .logoContainer
         @apply w-2/3 my-8
     .closeIcon
         @apply text-4xl text-white transition hover:text-gray-300 md:text-6xl
-
 .navMob
     @apply text-2xl capitalize text-center font-semibold text-white my-16 md:my-24 space-y-12 md:text-4xl md:space-y-24
     ul
         @apply space-y-12 md:space-y-24
         li
             @apply transition hover:cursor-pointer hover:text-gray-400
-
 .signupBtn
     @apply bg-blue-500 rounded-xl shadow-gray-900 shadow-lg transition hover:bg-blue-400 p-3 md:p-4
-
 .footNav
     @apply flex flex-col text-lg mb-16 text-center font-medium text-gray-400 space-y-4 md:text-xl md:mb-24
     .copyText
         @apply font-normal
-
 // Header Section
 .headerContainer
     @apply flex justify-between items-center py-3 px-2
-
 .back
     @apply flex justify-start items-center lg:ml-8
-
 .title
     @apply capitalize text-lg font-medium
-
 .actionContainer
     @apply flex justify-start items-center space-x-2
-
 .action
-    @apply cursor-pointer hover:scale-105 hover:text-violet-500 transition lg:mr-8
-
-.link
-    @apply cursor-pointer text-blue-500 transition hover:scale-105 hover:text-violet-500 lg:mr-8
-
+    @apply cursor-pointer text-blue-500 hover:scale-105 hover:text-violet-500 transition lg:mr-8
 .menu
     @apply lg:hidden
-
 .navbar
     @apply flex items-center space-x-6
     ul
@@ -65,12 +47,9 @@
             
         li.active
             @apply text-violet-500
-
 .backTitle
     @apply flex items-center
-
 .inBack
     @apply hidden lg:block text-xl
-
 .notInBack
     @apply lg:hidden

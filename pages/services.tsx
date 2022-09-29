@@ -4,7 +4,31 @@ import { ReactElement } from 'react';
 import { NextPageWithLayout } from './_app';
 import { motion } from 'framer-motion';
 import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import styles from '@/styles/Services.module.sass';
+import popArray from '@/utils/popularServices';
+import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import { FreeMode } from 'swiper';
+import catArray from '@/utils/serviceCategories.ts';
+import { IoIosArrowDown } from 'react-icons/io';
+
+function ServiceFooter() {
+	return (
+		<footer className={styles.serviceFooter}>
+			<p>Did not find your profession above?</p>
+			<p className=''>Fill in the form :</p>
+			<form action=''>
+				<input type='text' placeholder='Job Name' />
+				<textarea placeholder='Job Description' />
+				<button type='button' onClick={() => alert('enter text first')}>
+					Submit
+				</button>
+			</form>
+		</footer>
+	);
+}
 
 const mainVariants = {
 	hidden: { opacity: 0, x: -200, y: 0 },
@@ -32,9 +56,52 @@ const ServicesPage: NextPageWithLayout = () => {
 				animate='enter'
 				exit='exit'
 				variants={mainVariants}
-				transition={{ type: 'linear' }}
-				className='h-screen text-center mt-12 text-xl'>
-				Services
+				transition={{ type: 'linear' }}>
+				<section className={styles.populars}>
+					<h4 className={styles.secTitle}>Popular</h4>
+
+					<div className={styles.popArray}>
+						<Swiper
+							spaceBetween={16}
+							slidesPerView='auto'
+							modules={[FreeMode]}
+							freeMode>
+							{popArray.map((item, id) => {
+								return (
+									<SwiperSlide key={id} className={styles.popItem}>
+										<Image
+											src={item.icon}
+											alt={item.name}
+											width={48}
+											height={48}
+										/>
+										<p>{item.name}</p>
+									</SwiperSlide>
+								);
+							})}
+						</Swiper>
+					</div>
+				</section>
+				<section className={styles.categories}>
+					<h4 className={styles.secTitle}>Categories</h4>
+					<div className={styles.catContainer}>
+						{catArray.map((item, id) => {
+							return (
+								<div key={id} className={styles.catItem}>
+									<Image
+										src={item.icon}
+										alt={item.name}
+										width={96}
+										height={96}
+									/>
+									<p>{item.name}</p>
+									<hr />
+									<IoIosArrowDown size={48} className='hidden sm:block' />
+								</div>
+							);
+						})}
+					</div>
+				</section>
 			</motion.main>
 		</>
 	);
@@ -43,9 +110,9 @@ const ServicesPage: NextPageWithLayout = () => {
 ServicesPage.getLayout = function getLayout(page: ReactElement) {
 	return (
 		<>
-			<Header title='services' back='/' action='signup' />
+			<Header title='services' back='/' action='search' />
 			{page}
-			<Footer />
+			<ServiceFooter />
 		</>
 	);
 };

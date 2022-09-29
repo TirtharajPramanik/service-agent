@@ -1,15 +1,11 @@
 @import "variables"
-    
 // Header Section
 .headerContainer
     @apply flex justify-between items-center px-2 py-6 lg:p-4 md:mb-12 space-x-4
-
 .hamMenu
     @apply text-3xl transition hover:scale-105 lg:hidden md:text-6xl
-
 .logoContainer
     @apply flex-1 max-w-sm lg:w-1/4
-
 .navDesk
     @apply hidden lg:inline text-xl
     ul
@@ -18,158 +14,116 @@
             @apply hover:underline underline-offset-4 decoration-gray-400 transition hover:cursor-pointer active:text-gray-400
         li.active
             @apply text-orange-500
-
 .navSign
     @apply flex justify-between items-center lg:space-x-12
-
 .signupBtn
     @apply text-lg text-orange-500 font-medium rounded-xl border border-orange-400 p-1 lg:px-2 lg:py-1 md:text-4xl md:px-4 md:py-3 hover:border-orange-500
     @apply transition hover:bg-orange-500 hover:text-white lg:text-xl lg:rounded-xl lg:border-2 transition active:bg-orange-600
-
 .signMenu
     @apply flex items-center justify-start space-x-2
 // Footer Section
 .footerBound
     @apply mt-32
-
 .footerWrapper
     @apply md:flex justify-around md:mb-12
-
 .footerContainer
     @apply flex justify-around items-center md:w-full
-
 .contactForm
     @apply text-lg md:text-xl w-1/2 md:w-1/3 flex flex-col space-y-4 md:order-2 px-2
     input, textArea
         @apply p-1 md:py-3 text-center rounded-lg bg-gray-100 border
-
 .footLogo
     @apply w-full sm:w-1/3 px-4 text-center space-y-4 md:order-1
-
 .contactBtn, .contactFormBtn
     @apply text-lg font-medium capitalize rounded-xl p-2 bg-orange-400 text-white
     @apply hover:bg-orange-500 md:text-xl md:rounded-xl md:p-2 transition md:order-3 active:bg-orange-500
-
 .contactBtn
     @apply md:hidden
-
 .contactFormBtn
     @apply hidden md:block
-
 .footNav
     @apply capitalize font-medium flex md:flex-col justify-around mt-12 md:order-5 md:space-y-8 md:text-xl md:my-auto md:w-fit my-4 px-2
-
 .copyText
     @apply font-normal text-center block md:my-auto md:order-6 md:text-xl
-
 // Hero Section
 .mainContainer
 .heroSec
     @apply lg:flex flex-row-reverse justify-around
-
 .heroTxt
 .iconImage
     @apply hidden lg:block w-1/4 mx-auto my-12
-
 .heroTitle, .heroSubTitle
     font-family: $secondary-font-stack
     @apply font-bold text-center capitalize my-4 lg:my-8
     span
         @apply text-orange-600
-
 .heroTitle
     @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl
-
 .heroSubTitle
     @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl md:mb-24
-
 .heroImage
     @apply my-8 lg:w-1/2 mx-4 sm:mx-8 md:mx-16 lg:mx-4 max-w-3xl
-
 .signupNowBtn, .signupNowBtnDesk
     @apply text-xl bg-blue-500 p-3 rounded-xl text-white font-bold shadow-lg block mx-auto my-12 capitalize
     @apply transition hover:shadow-2xl hover:shadow-blue-300 active:bg-blue-400
-
 .signupNowBtn
     @apply lg:hidden sm:text-2xl md:text-3xl
-
 .signupNowBtnDesk
     @apply text-2xl p-3 rounded-lg hidden lg:block mb-12
-
 .scrollBtn
     @apply bg-gray-50 rounded-full text-6xl p-2 shadow-lg hidden lg:block mx-auto mb-4 text-gray-500 hover:scale-105 transition
-
 .sliderContainer
     @apply lg:hidden py-8 bg-gray-50
-
 .sliderImage
 .noSlideContainer
-    @apply lg:block hidden bg-gray-50 px-8 py-16 
-
+    @apply lg:block hidden bg-gray-50 px-8 py-16
+.sliderImage
+    @apply  max-w-xs
 .noSlide
     @apply flex justify-around items-center
-
 .noSlideImage
     @apply w-3/4 hover:scale-105 transition
-
 .slideTitle
     @apply text-2xl sm:text-3xl font-semibold lg:font-medium mb-8 ml-4
     span
         @apply text-orange-600
-
 .slideTxt
     @apply text-xl lg:text-xl text-center font-semibold lg:font-medium
-
 .sliderContainer, .noSlideContainer
     @apply mb-16
-
 // Article Section
 .articleSec
     @apply flex flex-col justify-between items-start space-y-16
-
 .article
     @apply p-6 md:flex md:m-12
     &:nth-child(even)
         @apply md:flex-row-reverse md:bg-gray-50
-
 .articleImage
-    @apply w-2/3 mx-auto my-4 md:w-1/3 lg:w-1/4
-
+    @apply w-2/3 mx-auto my-4 md:w-1/3 lg:w-1/4 max-w-xs
 .articleTxt
     @apply space-y-4 md:space-y-6 md:w-1/2
-
 .articleTitle
     @apply text-lg font-medium capitalize text-center md:text-xl lg:text-2xl
-
 .articleDesc
     @apply md:text-lg lg:text-xl
-
 .joinBtn
     @apply border shadow-md px-3 py-1 border-blue-400 rounded-lg text-blue-500 block mx-auto mt-2 hover:bg-blue-400 hover:text-white transition lg:text-lg
-
 .exploreBtn
     @apply block mx-auto rounded-md p-2 bg-orange-400 text-white shadow-lg mt-16 font-medium md:text-xl hover:bg-orange-500 hover:shadow-xl transition lg:text-2xl lg:px-3 lg:mt-24
-
 //Methods Section
 .methodsContainer
     @apply bg-gray-100 p-8 lg:p-16 mt-32
-
 .methodsTitle
     @apply text-xl font-medium text-orange-500 capitalize
-
 .methods
     @apply list-disc mx-6 lg:mx-12 my-6 space-y-6 text-lg
-
 .descContainer
     @apply flex-col lg:flex-row flex items-center justify-around space-y-4
-
 .methodsDesc
     @apply text-xl font-medium my-4
     span
         @apply text-orange-500
-
 .customerLink
     @apply text-lg underline underline-offset-4 hover:scale-105 transition
-
 .signupBtmBtn
     @apply rounded-md p-2 bg-orange-400 text-white shadow-lg font-medium lg:text-xl hover:bg-orange-500 hover:shadow-xl transition capitalize text-lg

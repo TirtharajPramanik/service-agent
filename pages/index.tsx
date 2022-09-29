@@ -12,12 +12,14 @@ import heroLogo from '@/public/hero.svg';
 import SideNav from '@/components/layout/SideNav';
 import { useNav } from '@/context/NavContext';
 import { motion, useAnimation, useInView, Variants } from 'framer-motion';
-import { CarouselProvider, Slide, Slider } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
 import sliderImages from '@/utils/sliderImages';
 import Link from 'next/link';
 import articles, { IArticle } from '@/utils/articles';
 import { useMedia } from 'react-use';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import { Autoplay } from 'swiper';
 
 function HomeHeader() {
 	const { toggle } = useNav();
@@ -42,7 +44,9 @@ function HomeHeader() {
 				</nav>
 				<div className={styles.signMenu}>
 					<Link href='/dashboard'>
-						<button className={styles.signupBtn}>sign up</button>
+						<button type='button' className={styles.signupBtn}>
+							sign up
+						</button>
 					</Link>
 					<HiMenuAlt3 className={styles.hamMenu} onClick={toggle} />
 				</div>
@@ -65,6 +69,7 @@ function HomeFooter() {
 							rows={3}
 						/>
 						<button
+							type='button'
 							className={styles.contactFormBtn}
 							onClick={() => alert('enter text first')}>
 							contact
@@ -73,6 +78,7 @@ function HomeFooter() {
 					<div className={styles.footLogo}>
 						<Image src={footLogo} alt='footer logo' layout='responsive' />
 						<button
+							type='button'
 							className={styles.contactBtn}
 							onClick={() => alert('enter text first')}>
 							contact
@@ -132,7 +138,9 @@ function Article({ item }: { item: IArticle }) {
 				<p className={styles.articleTitle}>{item.title}</p>
 				<p className={styles.articleDesc}>{item.desc}</p>
 				<Link href={item.link}>
-					<button className={styles.joinBtn}>{item.quote}</button>
+					<button type='button' className={styles.joinBtn}>
+						{item.quote}
+					</button>
 				</Link>
 			</div>
 		</motion.article>
@@ -176,7 +184,9 @@ const Home: NextPageWithLayout = () => {
 							get more <span>customers</span>
 						</h2>
 						<Link href='/dashboard'>
-							<button className={styles.signupNowBtnDesk}>sign up now</button>
+							<button type='button' className={styles.signupNowBtnDesk}>
+								sign up now
+							</button>
 						</Link>
 						<Link href='#article'>
 							<FaAngleDoubleDown className={styles.scrollBtn} />
@@ -187,7 +197,9 @@ const Home: NextPageWithLayout = () => {
 					</div>
 				</section>
 				<Link href='/dashboard'>
-					<button className={styles.signupNowBtn}>sign up now</button>
+					<button type='button' className={styles.signupNowBtn}>
+						sign up now
+					</button>
 				</Link>
 
 				<div className={styles.noSlideContainer}>
@@ -212,36 +224,25 @@ const Home: NextPageWithLayout = () => {
 					<h3 className={styles.slideTitle}>
 						We help local businesses <span>Grow Big</span>
 					</h3>
-					<CarouselProvider
-						naturalSlideWidth={125}
-						naturalSlideHeight={100}
-						totalSlides={3}
-						visibleSlides={isMD ? (isLG ? (isXL ? 2.5 : 2) : 1.5) : 1.25}
-						isPlaying>
-						<Slider>
-							{sliderImages.map((item, id) => {
-								return (
-									<Slide index={0} key={id}>
-										<a
-											href={item.link}
-											rel='noopener noreferrer'
-											target='_blank'>
-											<div className={styles.sliderImage}>
-												<Image
-													src={item.image}
-													alt='slider'
-													layout='responsive'
-												/>
-												<p className={styles.slideTxt}>
-													philipmart {item.title}
-												</p>
-											</div>
-										</a>
-									</Slide>
-								);
-							})}
-						</Slider>
-					</CarouselProvider>
+					<Swiper
+						slidesPerView={isMD ? (isLG ? (isXL ? 2.5 : 2.25) : 1.5) : 1.25}
+						modules={[Autoplay]}
+						autoplay>
+						{sliderImages.map((item, id) => {
+							return (
+								<SwiperSlide key={id}>
+									<a
+										href={item.link}
+										rel='noopener noreferrer'
+										target='_blank'
+										className={styles.sliderImage}>
+										<Image src={item.image} alt='slider' layout='responsive' />
+										<p className={styles.slideTxt}>philipmart {item.title}</p>
+									</a>
+								</SwiperSlide>
+							);
+						})}
+					</Swiper>
 				</div>
 
 				<section className={styles.articleSec} id='article'>
@@ -250,7 +251,9 @@ const Home: NextPageWithLayout = () => {
 					})}
 				</section>
 				<Link href='/services'>
-					<button className={styles.exploreBtn}>Explore Services</button>
+					<button type='button' className={styles.exploreBtn}>
+						Explore Services
+					</button>
 				</Link>
 				<section className={styles.methodsContainer}>
 					<p className={styles.methodsTitle}>how we work</p>
@@ -283,7 +286,9 @@ const Home: NextPageWithLayout = () => {
 						</a>
 						<p>or,</p>
 						<Link href='/dashboard'>
-							<button className={styles.signupBtmBtn}>sign up</button>
+							<button type='button' className={styles.signupBtmBtn}>
+								sign up
+							</button>
 						</Link>
 					</div>
 				</section>

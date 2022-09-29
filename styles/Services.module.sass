@@ -1,0 +1,34 @@
+//  Popular Section
+.populars
+.secTitle
+    @apply text-xl font-medium p-4
+.popArray
+    @apply flex items-center justify-evenly px-8 py-2
+.popItem
+    @apply rounded border px-4 py-2 m-2 cursor-pointer w-auto transition hover:scale-105 #{!important}
+    p
+        @apply sm:text-lg mt-2
+
+// Categories Section
+.categories
+    @apply mt-8
+.catContainer
+    @apply space-y-8
+.catItem
+    @apply flex items-center text-lg sm:text-xl space-x-8 p-4 my-4 mx-4 md:mx-12 border rounded-md cursor-pointer transition hover:scale-105 max-h-24 sm:max-h-32
+    p
+        @apply sm:min-w-fit
+    hr
+        @apply w-full border rounded-lg border-emerald-600 hidden sm:block
+
+// Footer Section
+.serviceFooter
+    @apply mt-24 p-12 border-t
+    p
+        @apply mb-4
+    form
+        @apply sm:flex sm:space-x-6 items-end
+        input,textarea
+            @apply p-2 h-12 bg-white border-b-2 my-2 w-10/12
+        button
+            @apply rounded-md border px-2 py-1 border-blue-400 shadow shadow-blue-400 text-blue-500 font-medium block
