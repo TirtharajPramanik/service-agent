@@ -107,12 +107,12 @@ const articleVariants: Variants = {
 	enter: {
 		opacity: 1,
 		y: 0,
-		transition: { duration: 1, ease: 'easeIn' }
+		transition: { duration: 0.5, ease: 'easeIn' }
 	},
 	exit: {
 		opacity: 0,
 		y: 100,
-		transition: { duration: 1, ease: 'easeOut' }
+		transition: { duration: 0.5, ease: 'easeOut' }
 	}
 };
 

@@ -1,6 +1,6 @@
 import SideNav from '@/components/layout/SideNav';
 import Head from 'next/head';
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import { NextPageWithLayout } from './_app';
 import { motion } from 'framer-motion';
 import Header from '@/components/layout/Header';
@@ -13,6 +13,8 @@ import 'swiper/css/free-mode';
 import { FreeMode } from 'swiper';
 import catArray from '@/utils/serviceCategories.ts';
 import { IoIosArrowDown } from 'react-icons/io';
+import { useService } from '@/context/ServiceContext';
+import allArray from '@/utils/allServices';
 
 function ServiceFooter() {
 	return (
@@ -37,6 +39,8 @@ const mainVariants = {
 };
 
 const ServicesPage: NextPageWithLayout = () => {
+	const [openCat, setOpenCat] = useState(0);
+	const { selectem, toggle } = useService();
 	return (
 		<>
 			<Head>
@@ -68,7 +72,12 @@ const ServicesPage: NextPageWithLayout = () => {
 							freeMode>
 							{popArray.map((item, id) => {
 								return (
-									<SwiperSlide key={id} className={styles.popItem}>
+									<SwiperSlide
+										key={id}
+										onClick={() => toggle(id)}
+										className={
+											selectem.includes(id) ? styles.poptem : styles.popItem
+										}>
 										<Image
 											src={item.icon}
 											alt={item.name}
@@ -87,16 +96,55 @@ const ServicesPage: NextPageWithLayout = () => {
 					<div className={styles.catContainer}>
 						{catArray.map((item, id) => {
 							return (
-								<div key={id} className={styles.catItem}>
-									<Image
-										src={item.icon}
-										alt={item.name}
-										width={96}
-										height={96}
-									/>
-									<p>{item.name}</p>
-									<hr />
-									<IoIosArrowDown size={48} className='hidden sm:block' />
+								<div key={id}>
+									<div
+										onClick={() => setOpenCat(id)}
+										className={
+											id === openCat
+												? `${styles.catItem} ${styles.openCat}`
+												: styles.catItem
+										}>
+										<Image
+											src={item.icon}
+											alt={item.name}
+											width={96}
+											height={96}
+										/>
+										<p>{item.name}</p>
+										<hr />
+
+										<IoIosArrowDown
+											size={48}
+											className={`hidden sm:block transition ${
+												id === openCat && 'rotate-180'
+											}`}
+										/>
+									</div>
+									<div
+										className={
+											id === openCat ? styles.allArray : 'transition hidden'
+										}>
+										{allArray[item.id].map((item, id) => {
+											return (
+												<div
+													key={id}
+													className={
+														selectem.includes(id)
+															? styles.selectem
+															: styles.allItem
+													}
+													onClick={() => toggle(id)}>
+													<Image
+														src={item.icon}
+														alt={item.name}
+														width={48}
+														height={48}
+													/>
+													<p>{item.name}</p>
+												</div>
+											);
+										})}
+									</div>
 								</div>
 							);
 						})}

@@ -3,11 +3,13 @@
 .secTitle
     @apply text-xl font-medium p-4
 .popArray
-    @apply flex items-center justify-evenly px-8 py-2
-.popItem
+    @apply flex items-center justify-evenly px-4 sm:px-8 py-2
+.popItem, .poptem
     @apply rounded border px-4 py-2 m-2 cursor-pointer w-auto transition hover:scale-105 #{!important}
     p
         @apply sm:text-lg mt-2
+.poptem
+    @apply bg-gradient-to-t from-violet-100 to-violet-50
 
 // Categories Section
 .categories
@@ -15,11 +17,21 @@
 .catContainer
     @apply space-y-8
 .catItem
-    @apply flex items-center text-lg sm:text-xl space-x-8 p-4 my-4 mx-4 md:mx-12 border rounded-md cursor-pointer transition hover:scale-105 max-h-24 sm:max-h-32
+    @apply flex items-center text-lg sm:text-xl space-x-8 p-4 my-4 mx-4 md:mx-12 border rounded-md cursor-pointer transition hover:bg-gradient-to-t from-violet-100 to-violet-50 max-h-24 sm:max-h-32 border-gray-500
     p
         @apply sm:min-w-fit
     hr
         @apply w-full border rounded-lg border-emerald-600 hidden sm:block
+.openCat
+    @apply bg-gradient-to-t from-violet-100 to-violet-50
+
+// All Section
+.allArray
+    @apply flex flex-wrap mx-4 md:mx-12 p-2 sm:p-4 border-b border-x rounded transition  border-gray-500
+.allItem, .selectem
+    @apply rounded border p-2 m-2 cursor-pointer transition hover:scale-105
+.selectem
+    @apply bg-gradient-to-t from-violet-100 to-violet-50
 
 // Footer Section
 .serviceFooter
