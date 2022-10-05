@@ -14,6 +14,7 @@ model ServiceCategory {
   id       String    @id @default(cuid())
   name     String    @unique
   icon     String
+  order    Int
   services Service[]
 }
 
@@ -21,7 +22,7 @@ model Service {
   id         String          @id @default(cuid())
   name       String          @unique
   icon       String
-  popular    Boolean         @default(false)
   categoryId String
+  popular    Boolean         @default(false)
   category   ServiceCategory @relation(fields: [categoryId], references: [id])
 }

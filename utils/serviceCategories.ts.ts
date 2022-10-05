@@ -1,5 +1,9 @@
 const catArray = [
 	{
+		name: 'Popular',
+		icon: 'popular.svg'
+	},
+	{
 		name: 'Repairs & Maintenance',
 		icon: 'repair.svg'
 	},

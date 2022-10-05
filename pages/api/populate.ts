@@ -1,6 +1,6 @@
+import { service0 } from './../../utils/services';
 import { PrismaClient } from '@prisma/client';
-
-import allServices from '@/utils/allServices';
+import services from '@/utils/services';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
@@ -8,60 +8,29 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	await prisma.serviceCategory.update({
-		where: { name: 'Repairs & Maintenance' },
-		data: {
-			services: {
-				createMany: {
-					data: allServices.mechaArray,
-					skipDuplicates: true
+	services.forEach(async (item) => {
+		await prisma.serviceCategory.create({
+			data: {
+				name: item.name,
+				icon: item.icon,
+				order: item.order,
+				services: {
+					createMany: {
+						data: item.services
+					}
 				}
 			}
-		}
+		});
 	});
-	await prisma.serviceCategory.update({
-		where: { name: 'Traveling & Bookings' },
-		data: {
-			services: {
-				createMany: {
-					data: allServices.travelArray,
-					skipDuplicates: true
-				}
+	service0.services.forEach(async (item) => {
+		await prisma.service.update({
+			where: {
+				name: item.name
+			},
+			data: {
+				popular: true
 			}
-		}
-	});
-	await prisma.serviceCategory.update({
-		where: { name: 'Health & Medicine' },
-		data: {
-			services: {
-				createMany: {
-					data: allServices.healArray,
-					skipDuplicates: true
-				}
-			}
-		}
-	});
-	await prisma.serviceCategory.update({
-		where: { name: 'Cleaning & Maintenance' },
-		data: {
-			services: {
-				createMany: {
-					data: allServices.cleanArray,
-					skipDuplicates: true
-				}
-			}
-		}
-	});
-	await prisma.serviceCategory.update({
-		where: { name: 'Legal & Indoor Services' },
-		data: {
-			services: {
-				createMany: {
-					data: allServices.lawArray,
-					skipDuplicates: true
-				}
-			}
-		}
+		});
 	});
 
 	res.end('awesome@@');

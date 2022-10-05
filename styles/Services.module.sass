@@ -1,54 +1,29 @@
 //  Popular Section
 .populars
+    @apply mb-12
 .secTitle
-    @apply text-xl font-medium p-4
+    @apply text-xl font-medium p-4 flex items-center space-x-6
 .popArray
     @apply flex items-center justify-evenly sm:px-8
 .popItem, .poptem
-    @apply rounded border-2 md:font-normal px-4 py-2 m-2 cursor-pointer w-auto transition hover:scale-105 #{!important}
+    @apply rounded border-2 font-medium md:font-normal px-4 py-2 m-2 cursor-pointer w-auto transition hover:scale-105 #{!important}
     p
         @apply mt-2
 .poptem
     @apply bg-gradient-to-t from-violet-100 to-violet-50
-
-// Categories Section
-.categories
-    @apply mt-8
-.catContainer
-    @apply space-y-8
-.catItem
-    @apply flex items-center text-lg sm:text-xl space-x-8 p-2 my-4 mx-4 md:mx-12 border rounded-md cursor-pointer transition bg-gradient-to-t md:hover:from-violet-100 md:hover:to-violet-50 max-h-24 sm:max-h-32 border-gray-500 md:from-slate-100 md:to-slate-50
-    p
-        @apply sm:min-w-fit
-    hr
-        @apply w-full border rounded-lg border-emerald-600 hidden md:block
-.openCat
-    @apply bg-gradient-to-t md:from-violet-100 md:to-violet-50
-
-// All Section
-.allArray
-    @apply flex flex-wrap mx-4 md:mx-12 p-2 sm:p-4 border-b border-x rounded transition border-gray-500
-.allItem, .selectem
-    @apply rounded border-2 p-2 m-2 cursor-pointer transition hover:scale-105 bg-gradient-to-t from-slate-50 to-white md:font-normal font-medium
-.selectem
-    @apply bg-gradient-to-t from-violet-100 to-violet-50 drop-shadow-sm
 .selectemIcon
-    @apply p-1 rounded-full absolute -right-2 -top-2 border text-emerald-400 border-emerald-400 drop-shadow-md transition
-
+    @apply absolute -top-2 -right-2 rounded-full border p-1 text-emerald-500 border-emerald-500
 // Action Section
 .actionContainer
-    @apply bg-gradient-to-t from-slate-100 to-slate-50 fixed bottom-0 left-0 w-full p-4 flex justify-between items-center z-10 drop-shadow-md transition
-.actionBar
-    @apply flex justify-start items-center space-x-6 transition
-.selectedIcons
-    @apply -space-x-2 transition
+    @apply bg-gradient-to-t from-slate-100 to-slate-50 fixed bottom-0 left-0 w-full p-4 flex justify-between items-center drop-shadow-md transition space-x-1 z-10
 .selectIcon
     @apply rounded-full bg-white drop-shadow
 .nxt
-    @apply text-xl w-1/4
+    @apply text-xl
 .selectemCirc
-    @apply relative
-
+    @apply hover:scale-105 w-auto #{!important}
+.confirmIcon
+    @apply -mb-3 text-rose-500
 // Footer Section
 .serviceFooter
     @apply my-24 p-12 border-t
