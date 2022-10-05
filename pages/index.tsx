@@ -139,7 +139,7 @@ function Article({ item }: { item: IArticle }) {
 				<p className={styles.articleDesc}>{item.desc}</p>
 				<Link href={item.link}>
 					<button type='button' className={styles.joinBtn}>
-						{item.quote}
+						{item.action}
 					</button>
 				</Link>
 			</div>
@@ -284,14 +284,13 @@ const Home: NextPageWithLayout = () => {
 								View our customer <span>APP</span>
 							</p>
 						</a>
-						<p>or,</p>
-						<Link href='/dashboard'>
-							<button type='button' className={styles.signupBtmBtn}>
-								sign up
-							</button>
-						</Link>
 					</div>
 				</section>
+				<Link href='/dashboard'>
+					<button type='button' className={styles.signupBtmBtn}>
+						sign up
+					</button>
+				</Link>
 			</motion.main>
 		</>
 	);

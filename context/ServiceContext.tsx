@@ -1,8 +1,8 @@
 import { createContext, useContext, ReactNode, useState } from 'react';
 
 type ServiceContext = {
-	selectem: number[];
-	toggle: (id: number) => void;
+	selectem: string[];
+	toggle: (id: string) => void;
 };
 
 type Props = {
@@ -21,9 +21,9 @@ export function useService() {
 }
 
 export function ServiceProvider({ children }: Props) {
-	const [selectem, setSelectem] = useState([] as number[]);
+	const [selectem, setSelectem] = useState([] as string[]);
 
-	const toggle = (id: number) => {
+	const toggle = (id: string) => {
 		selectem.includes(id)
 			? setSelectem(selectem.filter((item) => item !== id))
 			: setSelectem([...selectem, id]);

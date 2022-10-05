@@ -1,239 +1,241 @@
-const allArray = [
-	[
-		{
-			name: 'E-Rikshaw Driver',
-			icon: '/serviceIcons/e-rikshaw_driver.svg',
-			id: 0
-		},
-		{
-			name: 'Car Mechanic',
-			icon: '/serviceIcons/car_repair.svg',
-			id: 1
-		},
-		{
-			name: 'Electrician',
-			icon: '/serviceIcons/electrician.svg',
-			id: 2
-		},
-		{
-			name: 'Grocery Delivery',
-			icon: '/serviceIcons/grocery_delivery.svg',
-			id: 3
-		},
-		{
-			name: 'Ambulance Service',
-			icon: '/serviceIcons/ambulance.svg',
-			id: 4
-		},
-		{
-			name: 'Train Ticket Booking',
-			icon: '/serviceIcons/train_ticket.svg',
-			id: 5
-		},
-		{
-			name: 'House Maid',
-			icon: '/serviceIcons/house_maid.svg',
-			id: 6
-		},
-		{
-			name: 'Bus Ticket Booking',
-			icon: '/serviceIcons/bus_ticket.svg',
-			id: 7
-		},
-		{
-			name: 'House/Office Cleaning',
-			icon: '/serviceIcons/house_cleaning.svg',
-			id: 8
-		}
-	],
-	[
-		{
-			name: 'E-Rikshaw Driver',
-			icon: '/serviceIcons/e-rikshaw_driver.svg',
-			id: 9
-		},
-		{
-			name: 'Car Mechanic',
-			icon: '/serviceIcons/car_repair.svg',
-			id: 10
-		},
-		{
-			name: 'Electrician',
-			icon: '/serviceIcons/electrician.svg',
-			id: 11
-		},
-		{
-			name: 'Grocery Delivery',
-			icon: '/serviceIcons/grocery_delivery.svg',
-			id: 12
-		},
-		{
-			name: 'Ambulance Service',
-			icon: '/serviceIcons/ambulance.svg',
-			id: 13
-		},
-		{
-			name: 'Train Ticket Booking',
-			icon: '/serviceIcons/train_ticket.svg',
-			id: 14
-		},
-		{
-			name: 'House Maid',
-			icon: '/serviceIcons/house_maid.svg',
-			id: 15
-		},
-		{
-			name: 'Bus Ticket Booking',
-			icon: '/serviceIcons/bus_ticket.svg',
-			id: 16
-		},
-		{
-			name: 'House/Office Cleaning',
-			icon: '/serviceIcons/house_cleaning.svg',
-			id: 17
-		}
-	],
-	[
-		{
-			name: 'E-Rikshaw Driver',
-			icon: '/serviceIcons/e-rikshaw_driver.svg',
-			id: 18
-		},
-		{
-			name: 'Car Mechanic',
-			icon: '/serviceIcons/car_repair.svg',
-			id: 19
-		},
-		{
-			name: 'Electrician',
-			icon: '/serviceIcons/electrician.svg',
-			id: 20
-		},
-		{
-			name: 'Grocery Delivery',
-			icon: '/serviceIcons/grocery_delivery.svg',
-			id: 21
-		},
-		{
-			name: 'Ambulance Service',
-			icon: '/serviceIcons/ambulance.svg',
-			id: 22
-		},
-		{
-			name: 'Train Ticket Booking',
-			icon: '/serviceIcons/train_ticket.svg',
-			id: 23
-		},
-		{
-			name: 'House Maid',
-			icon: '/serviceIcons/house_maid.svg',
-			id: 24
-		},
-		{
-			name: 'Bus Ticket Booking',
-			icon: '/serviceIcons/bus_ticket.svg',
-			id: 25
-		},
-		{
-			name: 'House/Office Cleaning',
-			icon: '/serviceIcons/house_cleaning.svg',
-			id: 26
-		}
-	],
-	[
-		{
-			name: 'E-Rikshaw Driver',
-			icon: '/serviceIcons/e-rikshaw_driver.svg',
-			id: 27
-		},
-		{
-			name: 'Car Mechanic',
-			icon: '/serviceIcons/car_repair.svg',
-			id: 28
-		},
-		{
-			name: 'Electrician',
-			icon: '/serviceIcons/electrician.svg',
-			id: 29
-		},
-		{
-			name: 'Grocery Delivery',
-			icon: '/serviceIcons/grocery_delivery.svg',
-			id: 30
-		},
-		{
-			name: 'Ambulance Service',
-			icon: '/serviceIcons/ambulance.svg',
-			id: 31
-		},
-		{
-			name: 'Train Ticket Booking',
-			icon: '/serviceIcons/train_ticket.svg',
-			id: 32
-		},
-		{
-			name: 'House Maid',
-			icon: '/serviceIcons/house_maid.svg',
-			id: 33
-		},
-		{
-			name: 'Bus Ticket Booking',
-			icon: '/serviceIcons/bus_ticket.svg',
-			id: 34
-		},
-		{
-			name: 'House/Office Cleaning',
-			icon: '/serviceIcons/house_cleaning.svg',
-			id: 35
-		}
-	],
-	[
-		{
-			name: 'E-Rikshaw Driver',
-			icon: '/serviceIcons/e-rikshaw_driver.svg',
-			id: 36
-		},
-		{
-			name: 'Car Mechanic',
-			icon: '/serviceIcons/car_repair.svg',
-			id: 37
-		},
-		{
-			name: 'Electrician',
-			icon: '/serviceIcons/electrician.svg',
-			id: 38
-		},
-		{
-			name: 'Grocery Delivery',
-			icon: '/serviceIcons/grocery_delivery.svg',
-			id: 39
-		},
-		{
-			name: 'Ambulance Service',
-			icon: '/serviceIcons/ambulance.svg',
-			id: 40
-		},
-		{
-			name: 'Train Ticket Booking',
-			icon: '/serviceIcons/train_ticket.svg',
-			id: 41
-		},
-		{
-			name: 'House Maid',
-			icon: '/serviceIcons/house_maid.svg',
-			id: 42
-		},
-		{
-			name: 'Bus Ticket Booking',
-			icon: '/serviceIcons/bus_ticket.svg',
-			id: 43
-		},
-		{
-			name: 'House/Office Cleaning',
-			icon: '/serviceIcons/house_cleaning.svg',
-			id: 44
-		}
-	]
+const mechaArray = [
+	{
+		name: 'Car Mechanic',
+		icon: 'car_repair.svg',
+		popular: true
+	},
+	{
+		name: 'E-Vehicle Repair',
+		icon: 'evehicle.svg',
+		popular: false
+	},
+	{
+		name: 'Washing Machine Repair',
+		icon: 'washMach.svg',
+		popular: false
+	},
+	{
+		name: 'A.C./Cooler Repair',
+		icon: 'cooler.svg',
+		popular: false
+	},
+	{
+		name: 'Mobile Repair',
+		icon: 'phone.svg',
+		popular: true
+	},
+	{
+		name: 'T.V./Monitor Repair',
+		icon: 'monitor.svg',
+		popular: false
+	},
+	{
+		name: 'Electrician',
+		icon: 'electrician.svg',
+		popular: true
+	},
+	{
+		name: 'Plumber',
+		icon: 'plumber.svg',
+		popular: false
+	}
 ];
 
-export default allArray;
+const travelArray = [
+	{
+		name: 'Car Rent',
+		icon: 'car_rent.svg',
+		popular: false
+	},
+	{
+		name: 'E-Rikshaw Driver',
+		icon: 'e-rikshaw_driver.svg',
+		popular: true
+	},
+	{
+		name: 'Bus Ticket Booking',
+		icon: 'bus_ticket.svg',
+		popular: false
+	},
+	{
+		name: 'Train Ticket Booking',
+		icon: 'train_ticket.svg',
+		popular: true
+	},
+	{
+		name: 'Plane Ticket Booking',
+		icon: 'plane_ticket.svg',
+		popular: false
+	},
+	{
+		name: 'Movie Ticket Booking',
+		icon: 'movie_ticket.svg',
+		popular: false
+	},
+	{
+		name: 'Hotel Room Booking',
+		icon: 'hotel_room.svg',
+		popular: true
+	},
+	{
+		name: 'Resturant Table Booking',
+		icon: 'resturant_table.svg',
+		popular: false
+	},
+	{
+		name: 'Courier Service',
+		icon: 'courier_boy.svg',
+		popular: false
+	},
+	{
+		name: 'Grocery Delivery',
+		icon: 'grocery_delivery.svg',
+		popular: true
+	},
+	{
+		name: 'Food Delivery',
+		icon: 'food_delivery.svg',
+		popular: false
+	}
+];
+
+const healArray = [
+	{
+		name: 'Doctor Appointment',
+		icon: 'doctor_appointment.svg',
+		popular: true
+	},
+	{
+		name: 'Home Nurse',
+		icon: 'home_nurse.svg',
+		popular: false
+	},
+	{
+		name: 'Blood Test',
+		icon: 'blood_test.svg',
+		popular: false
+	},
+	{
+		name: 'Health Care Service',
+		icon: 'health_care.svg',
+		popular: false
+	},
+	{
+		name: 'Ambulance Emergency',
+		icon: 'ambulance.svg',
+		popular: true
+	},
+	{
+		name: 'Medicine Delivery',
+		icon: 'medicine_delivery.svg',
+		popular: false
+	},
+	{
+		name: 'Veterinarian',
+		icon: 'veterinarian.svg',
+		popular: false
+	},
+	{
+		name: 'Yoga Teacher',
+		icon: 'yoga.svg',
+		popular: false
+	}
+];
+
+const cleanArray = [
+	{
+		name: 'Window Cleaning',
+		icon: 'clean_window.svg',
+		popular: false
+	},
+
+	{
+		name: 'House/Office Cleaning',
+		icon: 'house_cleaning.svg',
+		popular: true
+	},
+
+	{
+		name: 'Water Tank Cleaning',
+		icon: 'clean_tank.svg',
+		popular: false
+	},
+	{
+		name: 'Laundry Service',
+		icon: 'laundry.svg',
+		popular: true
+	},
+	{
+		name: 'Car Wash',
+		icon: 'car_wash.svg',
+		popular: false
+	},
+	{
+		name: 'Aquarium Cleaning',
+		icon: 'aquarium.svg',
+		popular: false
+	},
+	{
+		name: 'Toilet Cleaning',
+		icon: 'toilet.svg',
+		popular: false
+	},
+	{
+		name: 'Sewage Cleaning',
+		icon: 'sewage.svg',
+		popular: false
+	}
+];
+
+const lawArray = [
+	{
+		name: 'Legal Adviser',
+		icon: 'legal.svg',
+		popular: true
+	},
+	{
+		name: 'Business License Provider',
+		icon: 'license.svg',
+		popular: false
+	},
+	{
+		name: 'Income Tax Consultant',
+		icon: 'tax.svg',
+		popular: false
+	},
+	{
+		name: 'Garden Care',
+		icon: 'plants.svg',
+		popular: false
+	},
+	{
+		name: 'Beautician',
+		icon: 'beauty.svg',
+		popular: true
+	},
+	{
+		name: 'House Maid',
+		icon: 'house_maid.svg',
+		popular: true
+	},
+	{
+		name: 'Manual Labour',
+		icon: 'labour.svg',
+		popular: false
+	},
+	{
+		name: 'Private Tutor',
+		icon: 'tutor.svg',
+		popular: false
+	}
+];
+
+const allServices = {
+	mechaArray,
+	travelArray,
+	healArray,
+	cleanArray,
+	lawArray
+};
+
+export default allServices;

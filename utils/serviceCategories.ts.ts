@@ -1,29 +1,24 @@
 const catArray = [
 	{
 		name: 'Repairs & Maintenance',
-		icon: '/categoryIcons/repair.svg',
-		id: 0
+		icon: 'repair.svg'
 	},
 	{
 		name: 'Traveling & Bookings',
-		icon: '/categoryIcons/travel.svg',
-		id: 1
+		icon: 'travel.svg'
 	},
 
 	{
 		name: 'Health & Medicine',
-		icon: '/categoryIcons/health.svg',
-		id: 2
+		icon: 'health.svg'
 	},
 	{
 		name: 'Cleaning & Maintenance',
-		icon: '/categoryIcons/clean.svg',
-		id: 3
+		icon: 'clean.svg'
 	},
 	{
 		name: 'Legal & Indoor Services',
-		icon: '/categoryIcons/law.svg',
-		id: 4
+		icon: 'law.svg'
 	}
 ];
 

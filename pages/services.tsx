@@ -5,16 +5,15 @@ import { NextPageWithLayout } from './_app';
 import { motion } from 'framer-motion';
 import Header from '@/components/layout/Header';
 import styles from '@/styles/Services.module.sass';
-import popArray from '@/utils/popularServices';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import { FreeMode } from 'swiper';
-import catArray from '@/utils/serviceCategories.ts';
 import { IoIosArrowDown } from 'react-icons/io';
+import { GiCheckMark } from 'react-icons/gi';
 import { useService } from '@/context/ServiceContext';
-import allArray from '@/utils/allServices';
+import { PrismaClient, Service, ServiceCategory } from '@prisma/client';
 
 function ServiceFooter() {
 	return (
@@ -24,13 +23,21 @@ function ServiceFooter() {
 			<form action=''>
 				<input type='text' placeholder='Job Name' />
 				<textarea placeholder='Job Description' />
-				<button type='button' onClick={() => alert('enter text first')}>
-					Submit
+				<button
+					className={styles.btn}
+					type='button'
+					onClick={() => alert('enter text first')}>
+					submit
 				</button>
 			</form>
 		</footer>
 	);
 }
+
+type IProps = {
+	catArray: ServiceCategory[];
+	allArray: Service[];
+};
 
 const mainVariants = {
 	hidden: { opacity: 0, x: -200, y: 0 },
@@ -38,8 +45,8 @@ const mainVariants = {
 	exit: { opacity: 0, x: 0, y: -100 }
 };
 
-const ServicesPage: NextPageWithLayout = () => {
-	const [openCat, setOpenCat] = useState(0);
+const ServicesPage: NextPageWithLayout<IProps> = ({ catArray, allArray }) => {
+	const [openCat, setOpenCat] = useState(catArray[0].id);
 	const { selectem, toggle } = useService();
 	return (
 		<>
@@ -70,23 +77,34 @@ const ServicesPage: NextPageWithLayout = () => {
 							slidesPerView='auto'
 							modules={[FreeMode]}
 							freeMode>
-							{popArray.map((item, id) => {
-								return (
-									<SwiperSlide
-										key={id}
-										onClick={() => toggle(id)}
-										className={
-											selectem.includes(id) ? styles.poptem : styles.popItem
-										}>
-										<Image
-											src={item.icon}
-											alt={item.name}
-											width={48}
-											height={48}
-										/>
-										<p>{item.name}</p>
-									</SwiperSlide>
-								);
+							{allArray.map((popItem) => {
+								if (popItem.popular)
+									return (
+										<SwiperSlide
+											key={popItem.id}
+											onClick={() => toggle(popItem.id)}
+											className={
+												selectem.includes(popItem.id)
+													? styles.poptem
+													: styles.popItem
+											}>
+											<span
+												className={
+													selectem.includes(popItem.id)
+														? styles.selectemIcon
+														: ' transition hidden'
+												}>
+												<GiCheckMark />
+											</span>
+											<Image
+												src={'/serviceIcons/' + popItem.icon}
+												alt={popItem.name}
+												width={48}
+												height={48}
+											/>
+											<p>{popItem.name}</p>
+										</SwiperSlide>
+									);
 							})}
 						</Swiper>
 					</div>
@@ -94,61 +112,108 @@ const ServicesPage: NextPageWithLayout = () => {
 				<section className={styles.categories}>
 					<h4 className={styles.secTitle}>Categories</h4>
 					<div className={styles.catContainer}>
-						{catArray.map((item, id) => {
+						{catArray.map((catItem) => {
 							return (
-								<div key={id}>
+								<div key={catItem.id}>
 									<div
-										onClick={() => setOpenCat(id)}
+										onClick={() => setOpenCat(catItem.id)}
 										className={
-											id === openCat
+											catItem.id === openCat
 												? `${styles.catItem} ${styles.openCat}`
 												: styles.catItem
 										}>
 										<Image
-											src={item.icon}
-											alt={item.name}
+											src={'/categoryIcons/' + catItem.icon}
+											alt={catItem.name}
 											width={96}
 											height={96}
 										/>
-										<p>{item.name}</p>
+										<p>{catItem.name}</p>
 										<hr />
 
 										<IoIosArrowDown
 											size={48}
-											className={`hidden sm:block transition ${
-												id === openCat && 'rotate-180'
+											className={`hidden md:block transition ${
+												catItem.id === openCat && 'rotate-180'
 											}`}
 										/>
 									</div>
+
 									<div
 										className={
-											id === openCat ? styles.allArray : 'transition hidden'
+											catItem.id === openCat
+												? styles.allArray
+												: 'transition hidden'
 										}>
-										{allArray[item.id].map((item, id) => {
-											return (
-												<div
-													key={id}
-													className={
-														selectem.includes(id)
-															? styles.selectem
-															: styles.allItem
-													}
-													onClick={() => toggle(id)}>
-													<Image
-														src={item.icon}
-														alt={item.name}
-														width={48}
-														height={48}
-													/>
-													<p>{item.name}</p>
-												</div>
-											);
-										})}
+										{allArray.length ? (
+											allArray.map((allItem) => {
+												if (allItem.categoryId === catItem.id)
+													return (
+														<div
+															key={allItem.id}
+															className={
+																selectem.includes(allItem.id)
+																	? styles.selectem
+																	: styles.allItem
+															}
+															onClick={() => toggle(allItem.id)}>
+															<span
+																className={
+																	selectem.includes(allItem.id)
+																		? styles.selectemIcon
+																		: ' transition hidden'
+																}>
+																<GiCheckMark />
+															</span>
+															<Image
+																src={'/serviceIcons/' + allItem.icon}
+																alt={allItem.name}
+																width={48}
+																height={48}
+															/>
+															<p>{allItem.name}</p>
+														</div>
+													);
+											})
+										) : (
+											<p>There are no options!</p>
+										)}
 									</div>
 								</div>
 							);
 						})}
 					</div>
+				</section>
+				<section className={styles.actionContainer}>
+					<div className={styles.actionBar}>
+						<span>
+							<p>Selected :</p>
+							<p>{selectem.length} items</p>
+						</span>
+						<div className={styles.selectedIcons}>
+							{allArray.map((allItem) => {
+								if (selectem.includes(allItem.id))
+									return (
+										<span className={styles.selectemCirc}>
+											{/* <AiOutlineCloseCircle className={styles.selectemClose} /> */}
+											<Image
+												src={'/serviceIcons/' + allItem.icon}
+												alt={allItem.name}
+												width={48}
+												height={48}
+												className={styles.selectIcon}
+											/>
+										</span>
+									);
+							})}
+						</div>
+					</div>
+					<button
+						type='button'
+						className={`${styles.btn} ${styles.nxt}`}
+						onClick={() => alert('select service first')}>
+						next
+					</button>
 				</section>
 			</motion.main>
 		</>
@@ -166,3 +231,10 @@ ServicesPage.getLayout = function getLayout(page: ReactElement) {
 };
 
 export default ServicesPage;
+
+export async function getStaticProps() {
+	const prisma = new PrismaClient();
+	const catArray = await prisma.serviceCategory.findMany();
+	const allArray = await prisma.service.findMany();
+	return { props: { catArray, allArray } };
+}

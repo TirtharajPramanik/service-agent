@@ -1,10 +1,10 @@
-import groceryIm from '@/public/grocery.png';
+import grocIm from '@/public/grocery.png';
 import foodIm from '@/public/food.png';
-import medicIm from '@/public/medic.png';
+import mediIm from '@/public/medic.png';
 
 const grocery = {
 	title: 'grocery',
-	image: groceryIm,
+	image: grocIm,
 	link: 'https://philipmartgrocery.com'
 };
 const food = {
@@ -14,7 +14,7 @@ const food = {
 };
 const medic = {
 	title: 'medicare',
-	image: medicIm,
+	image: mediIm,
 	link: 'https://philipmartmedicare.com'
 };
 

@@ -31,11 +31,11 @@
 .contactForm
     @apply text-lg md:text-xl w-1/2 md:w-1/3 flex flex-col space-y-4 md:order-2 px-2
     input, textArea
-        @apply p-1 md:py-3 text-center rounded-lg bg-gray-100 border
+        @apply p-1 md:py-3 text-center rounded-lg bg-gradient-to-t from-slate-100 to-slate-50 border
 .footLogo
-    @apply w-full sm:w-1/3 px-4 text-center space-y-4 md:order-1
+    @apply w-1/2 sm:w-1/3 px-4 text-center space-y-4 md:order-1
 .contactBtn, .contactFormBtn
-    @apply text-lg font-medium capitalize rounded-xl p-2 bg-orange-400 text-white
+    @apply text-lg font-medium capitalize rounded-xl p-2 border-orange-500 border-2
     @apply hover:bg-orange-500 md:text-xl md:rounded-xl md:p-2 transition md:order-3 active:bg-orange-500
 .contactBtn
     @apply md:hidden
@@ -73,10 +73,10 @@
 .scrollBtn
     @apply bg-gray-50 rounded-full text-6xl p-2 shadow-lg hidden lg:block mx-auto mb-4 text-gray-500 hover:scale-105 transition
 .sliderContainer
-    @apply lg:hidden py-8 bg-gray-50
+    @apply lg:hidden py-8 bg-gradient-to-t from-slate-100 to-slate-50
 .sliderImage
 .noSlideContainer
-    @apply lg:block hidden bg-gray-50 px-8 py-16
+    @apply lg:block hidden bg-gradient-to-t from-slate-100 to-slate-50 px-8 py-16
 .sliderImage
     @apply  max-w-xs
 .noSlide
@@ -97,7 +97,7 @@
 .article
     @apply p-6 md:flex md:m-12
     &:nth-child(even)
-        @apply md:flex-row-reverse md:bg-gray-50
+        @apply md:flex-row-reverse md:bg-gradient-to-t from-slate-100 to-slate-50
 .articleImage
     @apply w-2/3 mx-auto my-4 md:w-1/3 lg:w-1/4 max-w-xs
 .articleTxt
@@ -112,7 +112,7 @@
     @apply block mx-auto rounded-md p-2 bg-orange-400 text-white shadow-lg mt-16 font-medium md:text-xl hover:bg-orange-500 hover:shadow-xl transition lg:text-2xl lg:px-3 lg:mt-24
 //Methods Section
 .methodsContainer
-    @apply bg-gray-100 p-8 lg:p-16 mt-32
+    @apply bg-gradient-to-t from-slate-100 to-slate-50 p-8 lg:px-16 py-12 mt-32
 .methodsTitle
     @apply text-xl font-medium text-orange-500 capitalize
 .methods
@@ -126,4 +126,4 @@
 .customerLink
     @apply text-lg underline underline-offset-4 hover:scale-105 transition
 .signupBtmBtn
-    @apply rounded-md p-2 bg-orange-400 text-white shadow-lg font-medium lg:text-xl hover:bg-orange-500 hover:shadow-xl transition capitalize text-lg
+    @apply rounded-md p-3 mx-auto mt-16 block bg-blue-400 text-white shadow-lg font-medium md:text-2xl hover:bg-blue-500 hover:shadow-xl transition capitalize text-xl w-1/3 md:w-1/4
