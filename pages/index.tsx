@@ -15,7 +15,6 @@ import { motion, useAnimation, useInView, Variants } from 'framer-motion';
 import sliderImages from '@/utils/sliderImages';
 import Link from 'next/link';
 import articles, { IArticle } from '@/utils/articles';
-import { useMedia } from 'react-use';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/autoplay';
@@ -148,9 +147,6 @@ function Article({ item }: { item: IArticle }) {
 }
 
 const Home: NextPageWithLayout = () => {
-	const isMD = useMedia('(min-width: 400px)', false);
-	const isLG = useMedia('(min-width: 600px)', false);
-	const isXL = useMedia('(min-width: 800px)', false);
 	return (
 		<>
 			<Head>
@@ -202,40 +198,25 @@ const Home: NextPageWithLayout = () => {
 					</button>
 				</Link>
 
-				<div className={styles.noSlideContainer}>
-					<h3 className={styles.slideTitle}>
-						We help local businesses <span>Grow Big</span>
-					</h3>
-					<div className={styles.noSlide}>
-						{sliderImages.map((item, id) => {
-							return (
-								<div className={styles.noSlideImage} key={id}>
-									<a href={item.link} rel='noreferrer' target='_blank'>
-										<Image src={item.image} alt='slider' layout='responsive' />
-										<p className={styles.slideTxt}>philipmart {item.title}</p>
-									</a>
-								</div>
-							);
-						})}
-					</div>
-				</div>
-
 				<div className={styles.sliderContainer}>
 					<h3 className={styles.slideTitle}>
 						We help local businesses <span>Grow Big</span>
 					</h3>
 					<Swiper
-						slidesPerView={isMD ? (isLG ? (isXL ? 2.5 : 2.25) : 1.5) : 1.25}
+						slidesPerView={1.25}
+						breakpoints={{
+							425: { slidesPerView: 1.5 },
+							576: { slidesPerView: 2 },
+							640: { slidesPerView: 2.25 },
+							768: { slidesPerView: 2.5 },
+							992: { slidesPerView: 3 }
+						}}
 						modules={[Autoplay]}
 						autoplay>
 						{sliderImages.map((item, id) => {
 							return (
 								<SwiperSlide key={id}>
-									<a
-										href={item.link}
-										rel='noopener noreferrer'
-										target='_blank'
-										className={styles.sliderImage}>
+									<a href={item.link} rel='noopener noreferrer' target='_blank'>
 										<Image src={item.image} alt='slider' layout='responsive' />
 										<p className={styles.slideTxt}>philipmart {item.title}</p>
 									</a>

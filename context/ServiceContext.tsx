@@ -34,10 +34,6 @@ export function ServiceProvider({ children }: Props) {
 		toggle
 	};
 	return (
-		<>
-			<ServiceContext.Provider value={value}>
-				{children}
-			</ServiceContext.Provider>
-		</>
+		<ServiceContext.Provider value={value}>{children}</ServiceContext.Provider>
 	);
 }

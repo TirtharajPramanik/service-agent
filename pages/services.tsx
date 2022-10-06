@@ -8,11 +8,13 @@ import styles from '@/styles/Services.module.sass';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/autoplay';
 import 'swiper/css/free-mode';
-import { FreeMode } from 'swiper';
+import { Autoplay, FreeMode, Navigation } from 'swiper';
 import { GiCheckMark } from 'react-icons/gi';
 import { useService } from '@/context/ServiceContext';
-import { Prisma, PrismaClient, Service } from '@prisma/client';
+import { Prisma, PrismaClient } from '@prisma/client';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 
 function ServiceFooter() {
@@ -38,7 +40,6 @@ type IProps = {
 	serviceArray: Prisma.ServiceCategoryGetPayload<{
 		include: { services: true };
 	}>[];
-	popularArray: Service[];
 };
 
 const mainVariants = {
@@ -47,11 +48,9 @@ const mainVariants = {
 	exit: { opacity: 0, x: 0, y: -100 }
 };
 
-const ServicesPage: NextPageWithLayout<IProps> = ({
-	serviceArray,
-	popularArray
-}) => {
+const ServicesPage: NextPageWithLayout<IProps> = ({ serviceArray }) => {
 	const { selectem, toggle } = useService();
+	const selectedItems = [] as string[];
 	return (
 		<>
 			<Head>
@@ -72,125 +71,81 @@ const ServicesPage: NextPageWithLayout<IProps> = ({
 				exit='exit'
 				variants={mainVariants}
 				transition={{ type: 'linear' }}>
-				<>
-					<section className={styles.populars}>
-						<div className={styles.secTitle}>
-							<Image
-								src={'/categoryIcons/popular.svg'}
-								alt='populars'
-								width={48}
-								height={48}
-							/>
-							<h4>Popular</h4>
-							<h4 className='text-blue-500'>{popularArray.length}</h4>
-						</div>
+				{/* <> */}
+				{serviceArray.map((serviceItem) => {
+					return (
+						<section className={styles.populars} key={serviceItem.id}>
+							<div className={styles.secTitle}>
+								<Image
+									src={'/categoryIcons/' + serviceItem.icon}
+									alt={serviceItem.name}
+									width={48}
+									height={48}
+								/>
+								<h4>{serviceItem.name}</h4>
+								<h4 className='text-blue-500'>{serviceItem.services.length}</h4>
+							</div>
 
-						<div className={styles.popArray}>
-							<Swiper
-								spaceBetween={16}
-								slidesPerView='auto'
-								modules={[FreeMode]}
-								freeMode>
-								{popularArray.map((popItem) => {
-									return (
-										<SwiperSlide
-											key={popItem.id}
-											onClick={() => toggle(popItem.id)}
-											className={
-												selectem.includes(popItem.id)
-													? styles.poptem
-													: styles.popItem
-											}>
-											<span
+							<div className={styles.popArray}>
+								<Swiper
+									spaceBetween={16}
+									slidesPerView='auto'
+									breakpoints={{ 768: { navigation: { enabled: true } } }}
+									modules={[FreeMode, Navigation, Autoplay]}
+									navigation={{ enabled: false }}
+									freeMode
+									autoplay={{
+										disableOnInteraction: true,
+										pauseOnMouseEnter: true
+									}}>
+									{serviceItem.services.map((popItem) => {
+										return (
+											<SwiperSlide
+												key={popItem.id}
+												onClick={() => toggle(popItem.id)}
 												className={
 													selectem.includes(popItem.id)
-														? styles.selectemIcon
-														: ' transition hidden'
+														? styles.poptem
+														: styles.popItem
 												}>
-												<GiCheckMark />
-											</span>
-											<Image
-												src={'/serviceIcons/' + popItem.icon}
-												alt={popItem.name}
-												width={48}
-												height={48}
-											/>
-											<p>{popItem.name}</p>
-										</SwiperSlide>
-									);
-								})}
-							</Swiper>
-						</div>
-					</section>
-
-					{serviceArray.map((serviceItem) => {
-						return (
-							<section className={styles.populars} key={serviceItem.id}>
-								<div className={styles.secTitle}>
-									<Image
-										src={'/categoryIcons/' + serviceItem.icon}
-										alt={serviceItem.name}
-										width={48}
-										height={48}
-									/>
-									<h4>{serviceItem.name}</h4>
-									<h4 className='text-blue-500'>
-										{serviceItem.services.length}
-									</h4>
-								</div>
-
-								<div className={styles.popArray}>
-									<Swiper
-										spaceBetween={16}
-										slidesPerView='auto'
-										modules={[FreeMode]}
-										freeMode>
-										{serviceItem.services.map((popItem) => {
-											return (
-												<SwiperSlide
-													key={popItem.id}
-													onClick={() => toggle(popItem.id)}
+												<span
 													className={
 														selectem.includes(popItem.id)
-															? styles.poptem
-															: styles.popItem
+															? styles.selectemIcon
+															: ' transition hidden'
 													}>
-													<span
-														className={
-															selectem.includes(popItem.id)
-																? styles.selectemIcon
-																: ' transition hidden'
-														}>
-														<GiCheckMark />
-													</span>
-													<Image
-														src={'/serviceIcons/' + popItem.icon}
-														alt={popItem.name}
-														width={48}
-														height={48}
-													/>
-													<p>{popItem.name}</p>
-												</SwiperSlide>
-											);
-										})}
-									</Swiper>
-								</div>
-							</section>
-						);
-					})}
-					<section className={styles.actionContainer}>
-						<span>
-							<p>Selected:</p>
-							<p>{selectem.length} items</p>
-						</span>
-						<Swiper
-							spaceBetween={8}
-							slidesPerView='auto'
-							modules={[FreeMode]}
-							freeMode>
-							{serviceArray.map((serviceItem) => {
-								return serviceItem.services.map((allItem) => {
-									if (selectem.includes(allItem.id))
+													<GiCheckMark />
+												</span>
+												<Image
+													src={'/serviceIcons/' + popItem.icon}
+													alt={popItem.name}
+													width={48}
+													height={48}
+												/>
+												<p>{popItem.name}</p>
+											</SwiperSlide>
+										);
+									})}
+								</Swiper>
+							</div>
+						</section>
+					);
+				})}
+				<section className={styles.actionContainer}>
+					<span>
+						<p>Selected:</p>
+						<p>{selectem.length} items</p>
+					</span>
+					<Swiper
+						spaceBetween={8}
+						slidesPerView='auto'
+						modules={[FreeMode]}
+						freeMode>
+						{serviceArray.map((serviceItem) => {
+							return serviceItem.services.map((allItem) => {
+								if (!selectedItems.includes(allItem.id))
+									if (selectem.includes(allItem.id)) {
+										selectedItems.push(allItem.id);
 										return (
 											<SwiperSlide
 												className={styles.selectemCirc}
@@ -209,17 +164,18 @@ const ServicesPage: NextPageWithLayout<IProps> = ({
 												/>
 											</SwiperSlide>
 										);
-								});
-							})}
-						</Swiper>
-						<button
-							type='button'
-							className={`${styles.btn} ${styles.nxt}`}
-							onClick={() => alert('select service first')}>
-							next
-						</button>
-					</section>
-				</>
+									}
+							});
+						})}
+					</Swiper>
+					<button
+						type='button'
+						className={`${styles.btn} ${styles.nxt}`}
+						onClick={() => alert('select service first')}>
+						next
+					</button>
+				</section>
+				{/* </> */}
 			</motion.main>
 		</>
 	);
@@ -248,5 +204,13 @@ export async function getStaticProps() {
 			popular: true
 		}
 	});
-	return { props: { serviceArray, popularArray } };
+	const popularObject = {
+		id: '0',
+		name: 'Popular',
+		icon: 'popular.svg',
+		services: popularArray,
+		order: 0
+	};
+	const allArray = [popularObject, ...serviceArray];
+	return { props: { serviceArray: allArray } };
 }

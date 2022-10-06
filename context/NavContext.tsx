@@ -31,9 +31,5 @@ export function NavProvider({ children }: Props) {
 		mobnav,
 		toggle
 	};
-	return (
-		<>
-			<NavContext.Provider value={value}>{children}</NavContext.Provider>
-		</>
-	);
+	return <NavContext.Provider value={value}>{children}</NavContext.Provider>;
 }

@@ -73,24 +73,13 @@
 .scrollBtn
     @apply bg-gray-50 rounded-full text-6xl p-2 shadow-lg hidden lg:block mx-auto mb-4 text-gray-500 hover:scale-105 transition
 .sliderContainer
-    @apply lg:hidden py-8 bg-gradient-to-t from-slate-100 to-slate-50
-.sliderImage
-.noSlideContainer
-    @apply lg:block hidden bg-gradient-to-t from-slate-100 to-slate-50 px-8 py-16
-.sliderImage
-    @apply  max-w-xs
-.noSlide
-    @apply flex justify-around items-center
-.noSlideImage
-    @apply w-3/4 hover:scale-105 transition
+    @apply py-8 bg-gradient-to-t from-slate-100 to-slate-50 lg:px-8 py-16 my-16
 .slideTitle
     @apply text-2xl sm:text-3xl font-semibold lg:font-medium mb-8 ml-4
     span
         @apply text-orange-600
 .slideTxt
     @apply text-xl lg:text-xl text-center font-semibold lg:font-medium
-.sliderContainer, .noSlideContainer
-    @apply mb-16
 // Article Section
 .articleSec
     @apply flex flex-col justify-between items-start space-y-16
@@ -109,7 +98,7 @@
 .joinBtn
     @apply border shadow-md px-3 py-1 border-blue-400 rounded-lg text-blue-500 block mx-auto mt-2 hover:bg-blue-400 hover:text-white transition lg:text-lg
 .exploreBtn
-    @apply block mx-auto rounded-md p-2 bg-orange-400 text-white shadow-lg mt-16 font-medium md:text-xl hover:bg-orange-500 hover:shadow-xl transition lg:text-2xl lg:px-3 lg:mt-24
+    @apply rounded-md p-3 mx-auto mt-16 block bg-orange-500 text-white shadow-lg font-semibold md:text-2xl hover:bg-orange-600 hover:shadow-xl transition capitalize text-xl sm:w-1/3
 //Methods Section
 .methodsContainer
     @apply bg-gradient-to-t from-slate-100 to-slate-50 p-8 lg:px-16 py-12 mt-32
@@ -126,4 +115,4 @@
 .customerLink
     @apply text-lg underline underline-offset-4 hover:scale-105 transition
 .signupBtmBtn
-    @apply rounded-md p-3 mx-auto mt-16 block bg-blue-500 text-white shadow-lg font-medium md:text-2xl hover:bg-blue-600 hover:shadow-xl transition capitalize text-xl w-1/3 md:w-1/4
+    @apply rounded-md p-3 mx-auto mt-16 block bg-blue-500 text-white shadow-lg font-semibold md:text-2xl hover:bg-blue-600 hover:shadow-xl transition capitalize text-xl w-1/3 md:w-1/4
