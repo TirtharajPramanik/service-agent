@@ -3,7 +3,7 @@
 .headerContainer
     @apply flex justify-between items-center px-2 py-6 lg:p-4 md:mb-12 space-x-4
 .hamMenu
-    @apply text-3xl transition hover:scale-105 lg:hidden md:text-6xl
+    @apply text-3xl transition hover:scale-105 lg:hidden md:text-6xl text-blue-500 drop-shadow-sm hover:drop-shadow
 .logoContainer
     @apply flex-1 max-w-sm lg:w-1/4
 .navDesk
@@ -21,6 +21,8 @@
     @apply transition hover:bg-orange-500 hover:text-white lg:text-xl lg:rounded-xl lg:border-2 transition active:bg-orange-600
 .signMenu
     @apply flex items-center justify-start space-x-2
+.avatar
+    @apply text-orange-500 hover:scale-105 drop-shadow-sm hover:drop-shadow transition
 // Footer Section
 .footerBound
     @apply mt-32
@@ -35,7 +37,7 @@
 .footLogo
     @apply w-1/2 sm:w-1/3 px-4 text-center space-y-4 md:order-1
 .contactBtn, .contactFormBtn
-    @apply text-lg font-medium capitalize rounded-xl p-2 border-orange-500 border-2
+    @apply text-lg font-medium capitalize rounded-xl p-2 border-orange-500 border-2 hover:text-white
     @apply hover:bg-orange-500 md:text-xl md:rounded-xl md:p-2 transition md:order-3 active:bg-orange-500
 .contactBtn
     @apply md:hidden

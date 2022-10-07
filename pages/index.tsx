@@ -19,9 +19,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import { Autoplay } from 'swiper';
+import { useAuth } from '@/context/AuthContext';
+import { IoPersonCircle } from 'react-icons/io5';
 
 function HomeHeader() {
 	const { toggle } = useNav();
+	const { logedin } = useAuth();
 	return (
 		<header className={styles.headerContainer}>
 			<div className={styles.logoContainer}>
@@ -42,11 +45,17 @@ function HomeHeader() {
 					</ul>
 				</nav>
 				<div className={styles.signMenu}>
-					<Link href='/dashboard'>
-						<button type='button' className={styles.signupBtn}>
-							sign up
-						</button>
-					</Link>
+					{logedin ? (
+						<Link href='/profile'>
+							<IoPersonCircle size={42} className={styles.avatar} />
+						</Link>
+					) : (
+						<Link href='/signup'>
+							<button type='button' className={styles.signupBtn}>
+								sign up
+							</button>
+						</Link>
+					)}
 					<HiMenuAlt3 className={styles.hamMenu} onClick={toggle} />
 				</div>
 			</div>
@@ -179,7 +188,7 @@ const Home: NextPageWithLayout = () => {
 						<h2 className={styles.heroSubTitle}>
 							get more <span>customers</span>
 						</h2>
-						<Link href='/dashboard'>
+						<Link href='/signup'>
 							<button type='button' className={styles.signupNowBtnDesk}>
 								sign up now
 							</button>
@@ -267,7 +276,7 @@ const Home: NextPageWithLayout = () => {
 						</a>
 					</div>
 				</section>
-				<Link href='/dashboard'>
+				<Link href='/signup'>
 					<button type='button' className={styles.signupBtmBtn}>
 						sign up
 					</button>

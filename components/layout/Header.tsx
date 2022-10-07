@@ -30,7 +30,7 @@ function Header({ title, back, action }: IProps) {
 					<li>
 						<Link href='/'>home</Link>
 					</li>
-					<li className={title === 'services' ? '' : styles.active}>
+					<li className={title === 'dashboard' ? styles.active : ''}>
 						<Link href='/dashboard'>dashboard</Link>
 					</li>
 					<li className={title === 'services' ? styles.active : ''}>
