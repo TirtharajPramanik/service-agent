@@ -9,12 +9,10 @@ import { Autoplay, FreeMode, Navigation } from 'swiper';
 import { GiCheckMark } from 'react-icons/gi';
 import { useService } from '@/context/ServiceContext';
 import { IoCloseCircleOutline } from 'react-icons/io5';
-import { Prisma } from '@prisma/client';
+import { IService } from '@/utils/services';
 
 interface SProps {
-	serviceArray: Prisma.ServiceCategoryGetPayload<{
-		include: { services: true };
-	}>[];
+	serviceArray: IService[];
 	action: boolean;
 }
 
@@ -25,7 +23,7 @@ function Services({ serviceArray, action }: SProps) {
 		<>
 			{serviceArray.map((serviceItem) => {
 				return (
-					<section className={styles.populars} key={serviceItem.id}>
+					<section className={styles.populars} key={serviceItem.name}>
 						<div className={styles.secTitle}>
 							<Image
 								src={'/categoryIcons/' + serviceItem.icon}
@@ -52,18 +50,18 @@ function Services({ serviceArray, action }: SProps) {
 								{serviceItem.services.map((popItem) => {
 									return (
 										<SwiperSlide
-											key={popItem.id}
+											key={popItem.name}
 											onClick={() => {
-												if (action) toggle(popItem.id);
+												if (action) toggle(popItem.name);
 											}}
 											className={
-												selectem.includes(popItem.id)
+												selectem.includes(popItem.name)
 													? styles.poptem
 													: styles.popItem
 											}>
 											<span
 												className={
-													selectem.includes(popItem.id)
+													selectem.includes(popItem.name)
 														? styles.selectemIcon
 														: ' transition hidden'
 												}>
@@ -97,14 +95,14 @@ function Services({ serviceArray, action }: SProps) {
 						freeMode>
 						{serviceArray.map((serviceItem) => {
 							return serviceItem.services.map((allItem) => {
-								if (!selectedItems.includes(allItem.id))
-									if (selectem.includes(allItem.id)) {
-										selectedItems.push(allItem.id);
+								if (!selectedItems.includes(allItem.name))
+									if (selectem.includes(allItem.name)) {
+										selectedItems.push(allItem.name);
 										return (
 											<SwiperSlide
 												className={styles.selectemCirc}
-												key={allItem.id}
-												onClick={() => toggle(allItem.id)}>
+												key={allItem.name}
+												onClick={() => toggle(allItem.name)}>
 												<IoCloseCircleOutline
 													size={24}
 													className={styles.confirmIcon}

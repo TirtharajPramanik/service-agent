@@ -4,7 +4,6 @@ import Progress from '@/components/Progress';
 import { motion } from 'framer-motion';
 import Head from 'next/head';
 import { ReactElement } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { NextPageWithLayout } from './_app';
 
 const mainVariants = {
@@ -35,21 +34,6 @@ const SignupPage: NextPageWithLayout = () => {
 				variants={mainVariants}
 				transition={{ type: 'linear' }}>
 				<Progress />
-
-				<Swiper spaceBetween={16} slidesPerView={1}>
-					<SwiperSlide>
-						<div>hello</div>
-					</SwiperSlide>
-					<SwiperSlide>
-						<div>hello</div>
-					</SwiperSlide>
-					<SwiperSlide>
-						<div>hello</div>
-					</SwiperSlide>
-					<SwiperSlide>
-						<div>hello</div>
-					</SwiperSlide>
-				</Swiper>
 			</motion.main>
 		</>
 	);

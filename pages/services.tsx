@@ -9,8 +9,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 import 'swiper/css/free-mode';
-import { Prisma, PrismaClient } from '@prisma/client';
 import Services from '@/components/Services';
+import { IService } from '@/utils/services';
+import { getServiceCategory } from '@/utils/firestore';
 
 export function ServiceFooter() {
 	return (
@@ -32,9 +33,7 @@ export function ServiceFooter() {
 }
 
 export type IProps = {
-	serviceArray: Prisma.ServiceCategoryGetPayload<{
-		include: { services: true };
-	}>[];
+	serviceArray: IService[];
 };
 
 const mainVariants = {
@@ -83,23 +82,9 @@ ServicesPage.getLayout = function getLayout(page: ReactElement) {
 export default ServicesPage;
 
 export async function getStaticProps() {
-	const prisma = new PrismaClient();
-	const serviceArray = await prisma.serviceCategory.findMany({
-		include: { services: true },
-		orderBy: { order: 'asc' }
-	});
-	const popularArray = await prisma.service.findMany({
-		where: {
-			popular: true
-		}
-	});
-	const popularObject = {
-		id: '0',
-		name: 'Popular',
-		icon: 'popular.svg',
-		services: popularArray,
-		order: 0
+	const serviceArray = await getServiceCategory();
+	console.log(serviceArray);
+	return {
+		props: { serviceArray }
 	};
-	const allArray = [popularObject, ...serviceArray];
-	return { props: { serviceArray: allArray } };
 }
