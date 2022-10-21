@@ -4,9 +4,11 @@ import styles from '@/styles/Layout.module.sass';
 import { IoClose } from 'react-icons/io5';
 import { useNav } from '@/context/NavContext';
 import Link from 'next/link';
+import { useAuth } from '@/context/AuthContext';
 
 function SideNav() {
 	const { mobnav, toggle } = useNav();
+	const { logedin } = useAuth();
 	return (
 		<aside
 			className={mobnav ? styles.sideContainer : styles.sideContainerHidden}>
@@ -28,11 +30,13 @@ function SideNav() {
 						<Link href='/services'>services</Link>
 					</li>
 				</ul>
-				<Link href='/signup'>
-					<button type='button' className={styles.signupBtn} onClick={toggle}>
-						sign up
-					</button>
-				</Link>
+				{!logedin && (
+					<Link href='/signup'>
+						<button type='button' className={styles.signupBtn} onClick={toggle}>
+							sign up
+						</button>
+					</Link>
+				)}
 			</nav>
 			<div className={styles.footNav}>
 				<p onClick={toggle}>privacy policy</p>

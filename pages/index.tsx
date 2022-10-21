@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { ReactElement, useEffect, useRef } from 'react';
 import styles from '@/styles/Home.module.sass';
 import { NextPageWithLayout } from './_app';
@@ -9,7 +8,6 @@ import logo from '@/public/logo-hori.svg';
 import footWave from '@/public/foot-wave.svg';
 import footLogo from '@/public/logo-vert.svg';
 import heroLogo from '@/public/hero.svg';
-import SideNav from '@/components/layout/SideNav';
 import { useNav } from '@/context/NavContext';
 import { motion, useAnimation, useInView, Variants } from 'framer-motion';
 import sliderImages from '@/utils/sliderImages';
@@ -21,6 +19,7 @@ import 'swiper/css/autoplay';
 import { Autoplay } from 'swiper';
 import { useAuth } from '@/context/AuthContext';
 import { IoPersonCircle } from 'react-icons/io5';
+import Layout from '@/components/layout';
 
 function HomeHeader() {
 	const { toggle } = useNav();
@@ -105,12 +104,6 @@ function HomeFooter() {
 	);
 }
 
-const mainVariants = {
-	hidden: { opacity: 0, x: -200, y: 0 },
-	enter: { opacity: 1, x: 0, y: 0 },
-	exit: { opacity: 0, x: 0, y: -100 }
-};
-
 const articleVariants: Variants = {
 	enter: {
 		opacity: 1,
@@ -157,26 +150,8 @@ function Article({ item }: { item: IArticle }) {
 
 const Home: NextPageWithLayout = () => {
 	return (
-		<>
-			<Head>
-				<title>philipmart service agent</title>
-				<meta
-					name='description'
-					content='local service based business agent app by philipmart'
-				/>
-				<meta
-					name='keywords'
-					content='small business, digital marketing, online marketing, drycleaners, tailors, handyman, marketing'
-				/>
-			</Head>
-			<SideNav />
-			<motion.main
-				initial='hidden'
-				animate='enter'
-				exit='exit'
-				variants={mainVariants}
-				transition={{ type: 'linear' }}
-				className={styles.mainContainer}>
+		<Layout>
+			<>
 				<section className={styles.heroSec}>
 					<div className={styles.heroTxt}>
 						<div className={styles.iconImage}>
@@ -281,8 +256,8 @@ const Home: NextPageWithLayout = () => {
 						sign up
 					</button>
 				</Link>
-			</motion.main>
-		</>
+			</>
+		</Layout>
 	);
 };
 

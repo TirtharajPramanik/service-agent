@@ -1,10 +1,7 @@
-import Header from '@/components/layout/Header';
 import SideNav from '@/components/layout/SideNav';
-import Progress from '@/components/Progress';
-import { motion } from 'framer-motion';
 import Head from 'next/head';
 import { ReactElement } from 'react';
-import { NextPageWithLayout } from './_app';
+import { motion } from 'framer-motion';
 
 const mainVariants = {
 	hidden: { opacity: 0, x: -200, y: 0 },
@@ -12,7 +9,7 @@ const mainVariants = {
 	exit: { opacity: 0, x: 0, y: -100 }
 };
 
-const SignupPage: NextPageWithLayout = () => {
+const Layout = ({ children }: { children: ReactElement | string }) => {
 	return (
 		<>
 			<Head>
@@ -32,20 +29,13 @@ const SignupPage: NextPageWithLayout = () => {
 				animate='enter'
 				exit='exit'
 				variants={mainVariants}
-				transition={{ type: 'linear' }}>
-				<Progress />
+				transition={{ type: 'linear' }}
+				// className='h-screen text-center mt-12 text-xl'
+			>
+				{children}
 			</motion.main>
 		</>
 	);
 };
 
-SignupPage.getLayout = function getLayout(page: ReactElement) {
-	return (
-		<>
-			<Header title='signup' back='/' action='search' />
-			{page}
-		</>
-	);
-};
-
-export default SignupPage;
+export default Layout;
