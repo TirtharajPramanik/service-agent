@@ -24,10 +24,12 @@ const SigninPage: NextPageWithLayout = () => {
 						<Image src={img} alt='signin' layout='responsive' />
 					</div>
 					<div className={styles.personalContainer}>
-						<div className={`${styles.gsign} ${styles.blue}`}>
-							<FcGoogle size={30} />
-							<p>Sign in with Google</p>
-						</div>
+						<Link href='/signup/congrats'>
+							<div className={`${styles.gsign} ${styles.blue}`}>
+								<FcGoogle size={30} />
+								<p>Sign in with Google</p>
+							</div>
+						</Link>
 						<p className='my-6 text-center'>or,</p>
 						<form action='' method='post' className={styles.personalForm}>
 							<div className={styles.infoForm}>
@@ -43,20 +45,22 @@ const SigninPage: NextPageWithLayout = () => {
 								</span>
 							</div>
 						</form>
-
-						{number ? (
-							<Link href='/signup/verify'>
-								<button
-									type='button'
-									className={styles.mainbtn}
-									onClick={() =>
-										setSigninInfo({
-											number: number ? number : signinInfo.number
-										})
-									}>
-									next
-								</button>
-							</Link>
+						<Link href='/signup/verify'>
+							<button
+								type='button'
+								className={styles.mainbtn}
+								onClick={() =>
+									setSigninInfo({
+										number: number ? number : signinInfo.number
+									})
+								}>
+								next
+							</button>
+						</Link>
+						{/* {number ? (
+							------------- ************** space ************** -------------
+							------------- ************** space ************** -------------
+							------------- ************** space ************** -------------
 						) : (
 							<button
 								type='button'
@@ -64,7 +68,7 @@ const SigninPage: NextPageWithLayout = () => {
 								onClick={() => setShow(true)}>
 								next
 							</button>
-						)}
+						)} */}
 					</div>
 				</div>
 			</Layout>

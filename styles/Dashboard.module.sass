@@ -1,0 +1,41 @@
+.dashContainer
+    @apply md:h-screen flex flex-col md:flex-row transition sm:px-8 md:px-2 lg:px-8 xl:px-12
+    // h-[calc(100vh+24rem)]
+.dashWrapper
+    @apply md:w-1/2 md:flex md:flex-col space-y-12 hidden transition
+.scrollContainer
+    @apply flex-1 flex md:overflow-hidden flex-col md:px-2 lg:px-8 xl:px-12
+.scrollWrapper
+    @apply flex-1 overflow-y-scroll px-2 py-4 space-y-4 scroll-smooth
+// TimeStamp selection
+.timestampContainer
+    @apply flex justify-between items-center
+.timestampCalendar
+    @apply hover:drop-shadow transition
+// Analytics Section
+.analyticsCard
+    @apply w-full rounded-xl border border-slate-400 p-2
+    // drop-shadow-sm
+    // max-w-xl
+    // lg:w-4/5
+.mapCard
+    @apply w-full rounded-xl border border-slate-400 p-2 drop-shadow-sm h-64
+    // lg:w-4/5
+.slideContainer
+    :global(.swiper-pagination-bullet)
+        @apply w-fit rounded-xl h-fit px-2 bg-slate-100 text-blue-400 opacity-75 drop-shadow-sm transition capitalize
+    :global(.swiper-pagination-bullet-active)
+        @apply opacity-100 drop-shadow border-blue-500
+    // :global(.swiper-container)
+    // :global(.swiper-slide)
+    // :global(.swiper-slide img)
+    // :global(.swiper-slide:nth-child(1n))
+// Tasks Section
+.taskCard
+    @apply p-2 rounded-xl border flex flex-col border-slate-400 shadow space-y-2 relative transition hover:shadow-lg
+    // drop-shadow-sm
+.taskHeader
+    @apply flex justify-between items-center sticky top-0 py-2 z-10 backdrop-blur-md px-2
+
+.dropChip
+    @apply flex items-center text-sm bg-slate-100 p-1 rounded-xl cursor-pointer text-gray-500 text-center transition hover:shadow

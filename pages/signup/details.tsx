@@ -35,10 +35,12 @@ const SignupPage: NextPageWithLayout = () => {
 						<Image src={img} alt='signup' layout='responsive' priority />
 					</div>
 					<div className={styles.personalContainer}>
-						<div className={`${styles.gsign} ${styles.blue}`}>
-							<FcGoogle size={30} />
-							<p>Sign up with Google</p>
-						</div>
+						<Link href='/signup/payment'>
+							<div className={`${styles.gsign} ${styles.blue}`}>
+								<FcGoogle size={30} />
+								<p>Sign up with Google</p>
+							</div>
+						</Link>
 						<p className='my-6 text-center'>or,</p>
 						<form action='' method='post' className={styles.personalForm}>
 							<div className={styles.infoForm}>
@@ -119,25 +121,28 @@ const SignupPage: NextPageWithLayout = () => {
 						(city || agentInfo.city) &&
 						(ward || agentInfo.ward) &&
 						(ans || agentInfo.ans)  */}
-						{name && number && state && pin && city && ward && ans ? (
-							<Link href='/signup/payment'>
-								<button
-									type='button'
-									className={styles.mainbtn}
-									onClick={() =>
-										setAgentInfo({
-											name: name ? name : agentInfo.name,
-											number: number ? number : agentInfo.number,
-											state: state ? state : agentInfo.state,
-											pin: pin ? pin : agentInfo.pin,
-											city: city ? city : agentInfo.city,
-											ward: ward ? ward : agentInfo.ward,
-											ans: ans ? ans : agentInfo.ans
-										})
-									}>
-									next
-								</button>
-							</Link>
+						<Link href='/signup/payment'>
+							<button
+								type='button'
+								className={styles.mainbtn}
+								onClick={() =>
+									setAgentInfo({
+										name: name ? name : agentInfo.name,
+										number: number ? number : agentInfo.number,
+										state: state ? state : agentInfo.state,
+										pin: pin ? pin : agentInfo.pin,
+										city: city ? city : agentInfo.city,
+										ward: ward ? ward : agentInfo.ward,
+										ans: ans ? ans : agentInfo.ans
+									})
+								}>
+								next
+							</button>
+						</Link>
+						{/* {name && number && state && pin && city && ward && ans ? (
+							------------- ************** space ************** -------------
+							------------- ************** space ************** -------------
+							------------- ************** space ************** -------------
 						) : (
 							<button
 								type='button'
@@ -145,7 +150,7 @@ const SignupPage: NextPageWithLayout = () => {
 								onClick={() => setShow(true)}>
 								next
 							</button>
-						)}
+						)} */}
 					</div>
 				</div>
 			</>

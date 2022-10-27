@@ -19,7 +19,7 @@ const PaymentPage: NextPageWithLayout = () => {
 	const { setPaymentInfo, paymentInfo } = useAgent();
 	const [bank, setBank] = useState(paymentInfo.bank);
 	const [account, setAccount] = useState(paymentInfo.account);
-	const [show, setShow] = useState(true);
+	const [show, setShow] = useState(false);
 	return (
 		<Layout>
 			<>
@@ -33,24 +33,30 @@ const PaymentPage: NextPageWithLayout = () => {
 					</div>
 					<div className={styles.personalContainer}>
 						<div className='space-y-8'>
-							<div className={`${styles.gsign} ${styles.red}`}>
-								<FcGoogle size={30} />
-								<p>
-									Set up with <span>Google</span>
-								</p>
-							</div>
-							<div className={`${styles.gsign} ${styles.blue}`}>
-								<SiPaytm size={30} color='blue' />
-								<p>
-									Set up with <span>Paytm</span>
-								</p>
-							</div>
-							<div className={`${styles.gsign} ${styles.indigo}`}>
-								<TbBrandPaypal size={30} color='indigo' />
-								<p>
-									Set up with <span>Paypal</span>
-								</p>
-							</div>
+							<Link href='/signup/congrats'>
+								<div className={`${styles.gsign} ${styles.red}`}>
+									<FcGoogle size={30} />
+									<p>
+										Set up with <span>Google</span>
+									</p>
+								</div>
+							</Link>
+							<Link href='/signup/congrats'>
+								<div className={`${styles.gsign} ${styles.blue}`}>
+									<SiPaytm size={30} color='blue' />
+									<p>
+										Set up with <span>Paytm</span>
+									</p>
+								</div>
+							</Link>
+							<Link href='/signup/congrats'>
+								<div className={`${styles.gsign} ${styles.indigo}`}>
+									<TbBrandPaypal size={30} color='indigo' />
+									<p>
+										Set up with <span>Paypal</span>
+									</p>
+								</div>
+							</Link>
 						</div>
 						<p className='my-6 text-center'>or,</p>
 						<form action='' method='post' className={styles.personalForm}>
@@ -74,20 +80,23 @@ const PaymentPage: NextPageWithLayout = () => {
 							</span>
 						</form>
 						{/* (bank || paymentInfo.bank) && (account || paymentInfo.account) */}
-						{bank && account ? (
-							<Link href='/signup/congrats'>
-								<button
-									type='button'
-									className={styles.mainbtn}
-									onClick={() =>
-										setPaymentInfo({
-											bank: bank ? bank : paymentInfo.bank,
-											account: account ? account : paymentInfo.account
-										})
-									}>
-									next
-								</button>
-							</Link>
+						<Link href='/signup/congrats'>
+							<button
+								type='button'
+								className={styles.mainbtn}
+								onClick={() =>
+									setPaymentInfo({
+										bank: bank ? bank : paymentInfo.bank,
+										account: account ? account : paymentInfo.account
+									})
+								}>
+								next
+							</button>
+						</Link>
+						{/* {bank && account ? (
+							------------- ************** space ************** -------------
+							------------- ************** space ************** -------------
+							------------- ************** space ************** -------------
 						) : (
 							<button
 								type='button'
@@ -95,7 +104,7 @@ const PaymentPage: NextPageWithLayout = () => {
 								onClick={() => setShow(true)}>
 								next
 							</button>
-						)}
+						)} */}
 					</div>
 				</div>
 			</>

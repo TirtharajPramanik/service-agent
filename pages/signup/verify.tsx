@@ -23,7 +23,8 @@ const VerifyPage: NextPageWithLayout = () => {
 					title='verify'
 					dest='/signup/signin'
 					action={setShow}
-					number={signinInfo.number}
+					number='9080706050'
+					// number={signinInfo.number}
 				/>
 			)}
 			<Layout>
@@ -60,12 +61,15 @@ const VerifyPage: NextPageWithLayout = () => {
 							</button>
 							{/* </Link> */}
 						</div>
-						{otp ? (
-							<Link href='/signup/congrats'>
-								<button type='button' className={styles.mainbtn}>
-									next
-								</button>
-							</Link>
+						<Link href='/signup/congrats'>
+							<button type='button' className={styles.mainbtn}>
+								next
+							</button>
+						</Link>
+						{/* {otp ? (
+							------------- ************** space ************** -------------
+							------------- ************** space ************** -------------
+							------------- ************** space ************** -------------
 						) : (
 							<button
 								type='button'
@@ -73,7 +77,7 @@ const VerifyPage: NextPageWithLayout = () => {
 								onClick={() => setShow(true)}>
 								next
 							</button>
-						)}
+						)} */}
 					</div>
 				</div>
 			</Layout>

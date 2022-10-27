@@ -66,7 +66,7 @@ export async function getServiceCategory() {
 			);
 			catDocs.push({ ...item.data(), id: item.id, services: serviceDocs });
 		}
-		console.log('catdocs:\t', catDocs);
+		// console.log('catdocs:\t', catDocs);
 		return catDocs;
 	} catch (error) {
 		throw error;
