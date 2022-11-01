@@ -49,9 +49,8 @@ function Services({ serviceArray, action }: SProps) {
 								<Swiper
 									spaceBetween={16}
 									slidesPerView='auto'
-									breakpoints={{ 768: { navigation: { enabled: true } } }}
 									modules={[FreeMode, Navigation, Autoplay]}
-									navigation={{ enabled: false }}
+									navigation
 									freeMode
 									autoplay={{
 										disableOnInteraction: true,

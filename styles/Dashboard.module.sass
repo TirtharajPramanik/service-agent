@@ -4,7 +4,7 @@
 .dashWrapper
     @apply md:w-1/2 md:flex md:flex-col space-y-12 hidden transition
 .scrollContainer
-    @apply flex-1 flex md:overflow-hidden flex-col md:px-2 lg:px-8 xl:px-12
+    @apply flex-1 flex md:overflow-hidden flex-col md:px-2 lg:px-8 xl:px-12 mt-2
 .scrollWrapper
     @apply flex-1 overflow-y-scroll px-2 py-4 space-y-4 scroll-smooth
 // TimeStamp selection
@@ -19,7 +19,8 @@
     // max-w-xl
     // lg:w-4/5
 .mapCard
-    @apply w-full rounded-xl border border-slate-400 p-2 drop-shadow-sm h-64
+    @apply w-full rounded-xl border border-slate-400 h-64 p-2
+    // background-image: url('../public/map.svg')
     // lg:w-4/5
 .slideContainer
     :global(.swiper-pagination-bullet)
@@ -32,10 +33,18 @@
     // :global(.swiper-slide:nth-child(1n))
 // Tasks Section
 .taskCard
-    @apply p-2 rounded-xl border flex flex-col border-slate-400 shadow space-y-2 relative transition hover:shadow-lg
+    @apply p-2 rounded-xl border flex flex-col border-slate-400 shadow relative transition hover:shadow-lg cursor-pointer space-y-2
     // drop-shadow-sm
 .taskHeader
     @apply flex justify-between items-center sticky top-0 py-2 z-10 backdrop-blur-md px-2
 
 .dropChip
     @apply flex items-center text-sm bg-slate-100 p-1 rounded-xl cursor-pointer text-gray-500 text-center transition hover:shadow
+.taskInfoCard
+    @apply bg-slate-50 p-2 rounded-xl space-y-2
+.btn
+    @apply rounded-xl p-2 shadow transition hover:shadow-lg
+.out
+    @apply border-red-400 text-red-400 border
+.in
+    @apply bg-blue-400 text-white font-medium

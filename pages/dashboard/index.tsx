@@ -1,5 +1,5 @@
-import { ReactElement, useEffect } from 'react';
-import { NextPageWithLayout } from './_app';
+import { ReactElement } from 'react';
+import { NextPageWithLayout } from '../_app';
 import Header from '@/components/layout/Header';
 // import Footer from '@/components/layout/Footer';
 import Layout from '@/components/layout';
@@ -32,6 +32,12 @@ import {
 	// CiClock2
 } from 'react-icons/ci';
 import { GrEmergency } from 'react-icons/gr';
+import Link from 'next/link';
+import { MdOutlineElectricRickshaw } from 'react-icons/md';
+import { GiAutoRepair, GiFullPizza } from 'react-icons/gi';
+// import { RiMessage3Line } from 'react-icons/ri';
+// import Image from 'next/image';
+// import mapImg from '@/public/map.svg';
 
 function TimeStamp({ mb }: { mb: boolean }) {
 	return (
@@ -47,43 +53,61 @@ function TimeStamp({ mb }: { mb: boolean }) {
 
 function TaskItem({ task }: { task: ITask }) {
 	return (
-		<div className={styles.taskCard}>
-			{task.id < 1 && (
-				<div className='text-white bg-rose-400 w-fit px-2 drop-shadow capitalize absolute -mt-5 rounded-xl font-medium flex space-x-2 items-center'>
-					<GrEmergency size={20} />
-					<p>emergency</p>
+		<Link href={`/dashboard/task/${task.id}`}>
+			<div className={styles.taskCard}>
+				{task.id < 1 && (
+					<div className='text-white bg-rose-400 w-fit px-2 drop-shadow capitalize absolute -mt-5 rounded-xl font-medium flex space-x-2 items-center'>
+						<GrEmergency size={20} />
+						<p>emergency</p>
+					</div>
+				)}
+				{/* <div className='mb-2'> */}
+				<div className='space-y-2 flex justify-between items-center'>
+					<div className='flex items-center space-x-2'>
+						{task.id === 0 ? (
+							<MdOutlineElectricRickshaw size={24} color='gray' />
+						) : task.id === 1 ? (
+							<GiFullPizza size={24} color='gray' />
+						) : (
+							<GiAutoRepair size={24} color='gray' />
+						)}
+						<h3 className='capitalize'>
+							{task.type} {task.client}
+						</h3>
+					</div>
+					<h4 className='capitalize'>{task.date}</h4>
 				</div>
-			)}
-			<div className='space-y-2 flex justify-between items-center'>
-				<h4 className='capitalize'>
-					{task.type} {task.client}
-				</h4>
-				<h4 className='capitalize'>{task.date}</h4>
-			</div>
-			<div className='bg-slate-50 rounded-xl p-1 space-y-1'>
-				<div className='flex justify-between items-center'>
-					<p className='text-gray-500 text-sm flex items-center'>
-						<CiLocationOn size={20} color='red' className='mr-1' />
-						{task.loc}
-					</p>
+				{/* <h4 className='text-sm text-gray-500'>{task.note}</h4> */}
+				{/* </div> */}
+				<div className='bg-slate-50 rounded-xl p-1 space-y-1'>
+					{/* <div className='text-gray-500 text-sm flex items-center'>
+						<RiMessage3Line size={20} color='red' className='mr-1' />
+						<h4 className='text-sm text-gray-500'>{task.note}</h4>
+					</div> */}
+					<div className='flex justify-between items-center'>
+						<div className='flex items-center'>
+							<CiLocationOn size={20} color='red' className='mr-1' />
+							<p>{task.loc}</p>
+						</div>
 
-					<p className='text-gray-500 text-sm flex items-center'>
-						{/* <CiClock2 size={20} color='red' className='mr-1' /> */}
-						{task.time}
-					</p>
-				</div>
-				<div className='flex justify-between items-center'>
-					<p className='text-gray-500 text-sm flex items-center'>
-						<CiLocationArrow1 size={20} color='dodgerblue' className='mr-1' />
-						{task.dest}
-					</p>
-					<p className='text-gray-500 text-sm flex items-center'>
-						<CiPhone size={20} color='dodgerblue' className='mr-1' />
-						{task.phone}
-					</p>
+						<div className='flex items-center'>
+							{/* <CiClock2 size={20} color='red' className='mr-1' /> */}
+							<p>{task.time}</p>
+						</div>
+					</div>
+					<div className='flex justify-between items-center'>
+						<div className='flex items-center'>
+							<CiLocationArrow1 size={20} color='dodgerblue' className='mr-1' />
+							<p>{task.dest}</p>
+						</div>
+						<div className='flex items-center'>
+							<CiPhone size={20} color='dodgerblue' className='mr-1' />
+							<p>{task.phone}</p>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
+		</Link>
 	);
 }
 

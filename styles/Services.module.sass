@@ -9,6 +9,10 @@
     @apply text-xl font-medium p-4 flex items-center space-x-6
 .popArray
     @apply flex items-center justify-evenly
+    :global(.swiper-button-next)
+        @apply hidden md:block
+    :global(.swiper-button-prev)
+        @apply hidden md:block
 .popItem, .poptem
     @apply rounded border-2 border-gray-300 drop-shadow-sm backdrop-blur-sm font-medium md:font-normal px-4 py-2 m-2 cursor-pointer w-auto transition hover:scale-105 #{!important}
     p

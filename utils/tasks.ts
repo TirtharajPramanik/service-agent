@@ -7,99 +7,109 @@ export interface ITask {
 	time: string;
 	date: string;
 	phone: string;
+	note: string;
 }
 
 const taskArray = [
 	{
 		id: 0,
-		type: 'pickup',
+		type: 'pick up',
 		client: 'ajay dhar',
 		loc: 'babu para',
 		dest: 'apurba park',
 		time: '10:00 am',
 		date: 'today',
-		phone: '9080706050'
+		phone: '9080706050',
+		note: 'pick me up quick.'
 	},
 	{
 		id: 1,
-		type: 'pickup',
-		client: 'ajay dhar',
+		type: 'deliver',
+		client: 'pizza',
 		loc: 'babu para',
 		dest: 'apurba park',
 		time: '10:00 am',
 		date: 'today',
-		phone: '9080706050'
+		phone: '9080706050',
+		note: 'deliver it when its hot.'
 	},
 	{
 		id: 2,
-		type: 'pickup',
-		client: 'ajay dhar',
+		type: 'repair',
+		client: 'car',
 		loc: 'babu para',
 		dest: 'apurba park',
 		time: '10:00 am',
 		date: 'today',
-		phone: '9080706050'
-	},
-	{
-		id: 3,
-		type: 'pickup',
-		client: 'ajay dhar',
-		loc: 'babu para',
-		dest: 'apurba park',
-		time: '10:00 am',
-		date: 'today',
-		phone: '9080706050'
-	},
-	{
-		id: 4,
-		type: 'pickup',
-		client: 'ajay dhar',
-		loc: 'babu para',
-		dest: 'apurba park',
-		time: '10:00 am',
-		date: 'today',
-		phone: '9080706050'
-	},
-	{
-		id: 5,
-		type: 'pickup',
-		client: 'ajay dhar',
-		loc: 'babu para',
-		dest: 'apurba park',
-		time: '10:00 am',
-		date: 'today',
-		phone: '9080706050'
-	},
-	{
-		id: 6,
-		type: 'pickup',
-		client: 'ajay dhar',
-		loc: 'babu para',
-		dest: 'apurba park',
-		time: '10:00 am',
-		date: 'today',
-		phone: '9080706050'
-	},
-	{
-		id: 7,
-		type: 'pickup',
-		client: 'ajay dhar',
-		loc: 'babu para',
-		dest: 'apurba park',
-		time: '10:00 am',
-		date: 'today',
-		phone: '9080706050'
-	},
-	{
-		id: 8,
-		type: 'pickup',
-		client: 'ajay dhar',
-		loc: 'babu para',
-		dest: 'apurba park',
-		time: '10:00 am',
-		date: 'today',
-		phone: '9080706050'
+		phone: '9080706050',
+		note: 'i have a job tomorrow.'
 	}
+	// {
+	// 	id: 3,
+	// 	type: 'pick up',
+	// 	client: 'ajay dhar',
+	// 	loc: 'babu para',
+	// 	dest: 'apurba park',
+	// 	time: '10:00 am',
+	// 	date: 'today',
+	// 	phone: '9080706050',
+	// 	note: 'pick me up quick.'
+	// },
+	// {
+	// 	id: 4,
+	// 	type: 'pick up',
+	// 	client: 'ajay dhar',
+	// 	loc: 'babu para',
+	// 	dest: 'apurba park',
+	// 	time: '10:00 am',
+	// 	date: 'today',
+	// 	phone: '9080706050',
+	// 	note: 'pick me up quick.'
+	// },
+	// {
+	// 	id: 5,
+	// 	type: 'pick up',
+	// 	client: 'ajay dhar',
+	// 	loc: 'babu para',
+	// 	dest: 'apurba park',
+	// 	time: '10:00 am',
+	// 	date: 'today',
+	// 	phone: '9080706050',
+	// 	note: 'pick me up quick.'
+	// },
+	// {
+	// 	id: 6,
+	// 	type: 'pick up',
+	// 	client: 'ajay dhar',
+	// 	loc: 'babu para',
+	// 	dest: 'apurba park',
+	// 	time: '10:00 am',
+	// 	date: 'today',
+	// 	phone: '9080706050',
+	// 	note: 'pick me up quick.'
+	// },
+	// {
+	// 	id: 7,
+	// 	type: 'pick up',
+	// 	client: 'ajay dhar',
+	// 	loc: 'babu para',
+	// 	dest: 'apurba park',
+	// 	time: '10:00 am',
+	// 	date: 'today',
+	// 	phone: '9080706050',
+	// 	note: 'pick me up quick.'
+	// },
+	// {
+	// 	id: 8,
+	// 	type: 'pick up',
+	// 	client: 'ajay dhar',
+	// 	loc: 'babu para',
+	// 	dest: 'apurba park',
+	// 	time: '10:00 am',
+	// 	date: 'today',
+	// 	phone: '9080706050',
+	// 	note: 'pick me up quick.'
+	// }
 ];
 
 export default taskArray;
