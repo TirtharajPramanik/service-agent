@@ -1,7 +1,7 @@
 import Layout from '@/components/layout';
 import Header from '@/components/layout/Header';
 import { NextPageWithLayout } from '@/pages/_app';
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import styles from '@/styles/Dashboard.module.sass';
 import taskArray, { ITask } from '@/utils/tasks';
 import { useRouter } from 'next/router';
@@ -21,6 +21,37 @@ import {
 import { MdOutlineCopyAll, MdOutlineElectricRickshaw } from 'react-icons/md';
 import { BsClockHistory } from 'react-icons/bs';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+
+export function CopyNumber({ number }: { number: string }) {
+	const [copied, setCopied] = useState(false);
+	function copyNum() {
+		setCopied(true);
+		setTimeout(() => setCopied(false), 5000);
+	}
+	return (
+		<div className='text-gray-500 flex items-center relative'>
+			<MdOutlineCopyAll
+				size={20}
+				color='gray'
+				className='mr-1 transition hover:drop-shadow hover:scale-105'
+				onClick={() => {
+					navigator.clipboard.writeText(number);
+					copyNum();
+				}}
+			/>
+			{copied && (
+				<motion.div
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1, transition: { duration: 0.3 } }}
+					className={styles.copyNum}>
+					<p>copied!</p>
+				</motion.div>
+			)}
+			<p>{number}</p>
+		</div>
+	);
+}
 
 const Task: NextPageWithLayout = () => {
 	const router = useRouter();
@@ -113,10 +144,7 @@ const Task: NextPageWithLayout = () => {
 										<CiPhone size={20} color='dodgerblue' className='mr-1' />
 										<p>phone : </p>
 									</div>
-									<div className='text-gray-500 flex items-center'>
-										<MdOutlineCopyAll size={20} color='gray' className='mr-1' />
-										<p>{task.phone}</p>
-									</div>
+									<CopyNumber number={task.phone} />
 								</div>
 							</div>
 						</div>

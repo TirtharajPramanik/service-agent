@@ -27,14 +27,15 @@ import {
 import { _DeepPartialObject } from 'chart.js/types/utils';
 import {
 	CiLocationOn,
-	CiLocationArrow1,
-	CiPhone
+	CiLocationArrow1
+	// CiPhone
 	// CiClock2
 } from 'react-icons/ci';
 import { GrEmergency } from 'react-icons/gr';
 import Link from 'next/link';
-import { MdOutlineElectricRickshaw } from 'react-icons/md';
+import { MdOutlineCopyAll, MdOutlineElectricRickshaw } from 'react-icons/md';
 import { GiAutoRepair, GiFullPizza } from 'react-icons/gi';
+import { CopyNumber } from './task/[taskid]';
 // import { RiMessage3Line } from 'react-icons/ri';
 // import Image from 'next/image';
 // import mapImg from '@/public/map.svg';
@@ -100,10 +101,7 @@ function TaskItem({ task }: { task: ITask }) {
 							<CiLocationArrow1 size={20} color='dodgerblue' className='mr-1' />
 							<p>{task.dest}</p>
 						</div>
-						<div className='flex items-center'>
-							<CiPhone size={20} color='dodgerblue' className='mr-1' />
-							<p>{task.phone}</p>
-						</div>
+						<CopyNumber number={task.phone} />
 					</div>
 				</div>
 			</div>
