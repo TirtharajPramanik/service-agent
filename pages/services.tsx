@@ -8,7 +8,8 @@ import 'swiper/css/autoplay';
 import 'swiper/css/free-mode';
 import Services from '@/components/signup/Services';
 import { IService } from '@/utils/services';
-import { getServiceCategory } from '@/utils/firestore';
+// import { getServiceCategory } from '@/utils/firestore';
+import serviceArray from '@/utils/services';
 import Layout from '@/components/layout';
 
 export function ServiceFooter() {
@@ -55,7 +56,7 @@ ServicesPage.getLayout = function getLayout(page: ReactElement) {
 export default ServicesPage;
 
 export async function getStaticProps() {
-	const serviceArray = await getServiceCategory();
+	// const serviceArray = await getServiceCategory();
 	return {
 		props: { serviceArray }
 	};

@@ -10,12 +10,13 @@ const withPWA = require('next-pwa')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withPWA({
+	images: { unoptimized: true },
 	reactStrictMode: true,
 	// swcMinify: true,
-	i18n: {
-		locales: ['en'],
-		defaultLocale: 'en'
-	},
+	// i18n: {
+	// 	locales: ['en'],
+	// 	defaultLocale: 'en'
+	// },
 	webpack: (config) => {
 		config.watchOptions = {
 			poll: 1000,

@@ -200,7 +200,12 @@ const Home: NextPageWithLayout = () => {
 						{sliderImages.map((item, id) => {
 							return (
 								<SwiperSlide key={id}>
-									<a href={item.link} rel='noopener noreferrer' target='_blank'>
+									<a
+										// href={item.link}
+										href='#'
+										rel='noopener noreferrer'
+										// target='_blank'
+									>
 										<Image src={item.image} alt='slider' layout='responsive' />
 										<p className={styles.slideTxt}>philipmart {item.title}</p>
 									</a>
@@ -241,9 +246,10 @@ const Home: NextPageWithLayout = () => {
 					</p>
 					<div className={styles.descContainer}>
 						<a
-							href='https://philipmartservice.com'
+							// href='https://philipmartservice.com'
+							href='#'
 							rel='noopener noreferrer'
-							target='_blank'
+							// target='_blank'
 							className={styles.customerLink}>
 							<p className={styles.methodsDesc}>
 								View our customer <span>APP</span>

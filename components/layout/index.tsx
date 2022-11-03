@@ -16,7 +16,8 @@ const Layout = ({ children }: { children: ReactElement | string }) => {
 				<title>philipmart service agent dashboard</title>
 				<meta
 					name='description'
-					content='local service based business agent app by philipmart'
+					// content='local service based business agent app by philipmart'
+					content='local business service agent task manager dashboard app'
 				/>
 				<meta
 					name='keywords'
